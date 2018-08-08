@@ -1,0 +1,63 @@
+  <div class="card user-card">
+    <div class="card-header card-dash-header">
+      <i class="fas fa-user-circle"></i> Username
+    </div>
+    <div class="card-body">
+      <div class="height-sm"></div>
+      <h5 class="card-text">Balance</h5>
+      200 AEVX Tokens
+      <br />
+      <div class="height-lg"></div>
+      <div class="list-group" id="dashboard-menu">
+        <a class="list-group-item list-group-item-action active" id="wal-tab" ui-sref-active="active" ui-sref="app.main" role="tab" aria-controls="wallet-tab"
+          aria-selected="true">
+          <i class="fas fa-wallet"></i> Dashboard</a>
+        <a class="list-group-item list-group-item-action" id="set-tab" ui-sref-active="active" ui-sref="app.components.settings" aria-controls="settings-tab">
+          <i class="fas fa-cog"></i> Settings</a>
+        <a class="list-group-item list-group-item-action" id="ref-tab" ui-sref-active="active" ui-sref="app.components.referral" role="tab" aria-controls="referral-tab"
+          aria-selected="false">
+          <i class="fas fa-share-square"></i> Referral</a>
+        <a class="list-group-item list-group-item-action" id="k-tab" ui-sref-active="active" ui-sref="app.components.kyc" role="tab" aria-controls="kyc-tab"
+          aria-selected="false">
+          <i class="fas fa-check-circle"></i>KYC</a>
+        <a class="list-group-item list-group-item-action" id="trans-tab" ui-sref-active="active" ui-sref="app.components.transaction" role="tab" aria-controls="transactions-tab"
+          aria-selected="false">
+          <i class="fas fa-history"></i> Transaction History</a>
+        <a class="list-group-item list-group-item-action" id="get-tab" ui-sref-active="active" ui-sref="app.components.gettokens" role="tab" aria-controls="gettokens-tab"
+          aria-selected="false">
+          <i class="fas fa-arrow-alt-circle-right"></i> Get Token</a>
+      </div>
+      <div class="height-md"></div>
+    </div>
+  </div>
+  <div class="height-lg"></div>
+  <div class="card">
+    <div class="card-header card-dash-header">
+      <span class="mb-5 text-uppercase">End of Private Sale:</span>
+      <br />
+      <span id="ico-timer"></span>
+    </div>
+    <div class="card-body">
+      <div class="height-lg"></div>
+      <div class="progress" style="background: rgba(149, 222, 249, 0.35);   height: 2.5rem; border-radius: 7px;">
+        <div class="bar-step" style="left:3%;">
+          <div class="label-txt">Pre-ICO</div>
+          <div class="label-line" style="margin-left:30px;"></div>
+        </div>
+        <div class="bar-step" style="left:30%;">
+          <div class="label-txt">Public Sale</div>
+          <div class="label-line"></div>
+        </div>
+        <div class="bar-step" style="left: 60%;">
+          <div class="label-txt">Soft Cap</div>
+          <div class="label-line"></div>
+        </div>
+        <div class="bar-step" style="right: 3%;">
+          <div class="label-txt">End Sale</div>
+        </div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 20%; background-color:#79BD9A;"
+          aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">25%</div>
+      </div>
+    </div>
+  </div>
+  <div class="height-lg"></div>

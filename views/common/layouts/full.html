@@ -1,0 +1,27 @@
+<!-- Navbar -->
+<div ng-include="'views/common/navbar.html'"></div>
+
+<div class="app-body">
+  <section class="bg-gray">
+    <div class="container my-auto">
+      <div class="row">
+
+      <!-- Navigation -->
+      <div class="col-lg-4" ng-include="'views/common/sidebar-nav.html'"></div>
+
+    <!-- Main content -->
+            <ui-view class = "col-lg-8"></ui-view>
+
+        <!-- /.conainer-fluid -->
+      </div>
+    </div>
+  </section>
+
+
+    <!-- Aside Menu -->
+    <!-- <div ng-include="'views/common/aside.html'"></div> -->
+
+</div>
+
+<!-- Footer -->
+<div ng-include="'views/common/footer.html'"></div>
