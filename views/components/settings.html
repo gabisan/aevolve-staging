@@ -1,4 +1,4 @@
-<div class="order-first order-sm-first order-md-first order-lg-last">
+<div class="order-first order-sm-first order-md-first order-lg-last" ng-controller="settingsCtrl">
   <div class="tab-content" id="myTabContent">
       <div class="tab-pane show active" id="settings-tab" role="tabpanel" aria-labelledby="settings-tab">
           <h4>Settings</h4>
@@ -9,18 +9,18 @@
             </div>
             <div class="card-body">
               <div class="form-group">
-                <input class="form-control" id="name" type="text" placeholder="New Email" required="required">
+                <input class="form-control" id="email" type="text" placeholder="New Email" required="required">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
-                <input class="form-control" id="name" type="text" placeholder="Confirm New Email" required="required">
+                <input class="form-control" id="confirm_email" type="text" placeholder="Confirm New Email" required="required">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
-                <input class="form-control" id="name" type="password" placeholder="Current Password" required="required">
+                <input class="form-control" id="password" type="password" placeholder="Current Password" required="required">
                 <p class="help-block text-danger"></p>
               </div>
-              <a href="#" class="btn btn-primary bg-primary" data-toggle="modal" data-target="#2faPrompt">Change Email</a>
+              <a href="#" class="btn btn-primary bg-primary" ng-click="openAuthentication()">Change Email</a>
             </div>
           </div>
           <div class="height-lg"></div>
@@ -30,18 +30,18 @@
             </div>
             <div class="card-body">
               <div class="form-group">
-                <input class="form-control" id="name" type="password" placeholder="Old Password" required="required">
+                <input class="form-control" id="old_password" type="password" placeholder="Old Password" required="required">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
-                <input class="form-control" id="name" type="password" placeholder="New Password" required="required">
+                <input class="form-control" id="new_password" type="password" placeholder="New Password" required="required">
                 <p class="help-block text-danger"></p>
               </div>
               <div class="form-group">
-                <input class="form-control" id="name" type="password" placeholder="Confirm New Password" required="required">
+                <input class="form-control" id="confirm_password" type="password" placeholder="Confirm New Password" required="required">
                 <p class="help-block text-danger"></p>
               </div>
-              <a href="#" class="btn btn-primary bg-primary" data-toggle="modal" data-target="#2faPrompt">Change Password</a>
+              <a href="#" class="btn btn-primary bg-primary" ng-click="openAuthentication()">Change Password</a>
             </div>
           </div>
           <div class="height-lg"></div>
@@ -55,7 +55,7 @@
               <div class="height-md"></div>
               Lorem Ipsum is simply dummy text of the printing and typesetting industry.
               <div class="height-lg"></div>
-              <a href="#" class="btn btn-primary bg-primary" data-toggle="modal" data-target="#2faModal">Enable</a>
+              <a href="#" class="btn btn-primary bg-primary" ng-click="openAuthentication2()">Enable</a>
             </div>
           </div>
       </div>

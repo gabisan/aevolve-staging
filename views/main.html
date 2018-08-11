@@ -1,4 +1,4 @@
-<div class="order-first order-sm-first order-md-first order-lg-last">
+<div class="order-first order-sm-first order-md-first order-lg-last" ng-controller="dashboardCtrl">
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="wallet-tab" role="tabpanel" aria-labelledby="wallet-tab">
       <h4>Dashboard</h4>
@@ -9,10 +9,11 @@
         </div>
         <div class="card-body text-center">
           <i class="fas fa-qrcode fa-5x"></i>
-          <br /> Wallet ID: 02193219d89qu2378
-          <a href="#">Copy</a>
+          <br /> Wallet ID: <span id="wallet_id" value = "02193219d89qu2378">02193219d89qu2378</span>
+          <!-- <input type="text" ng-model="wallet"> -->
+          <a href="#" ngclipboard data-clipboard-target="#wallet_id">Copy</a>
           <div class="height-lg"></div>
-          <a href="#" class="btn btn-primary bg-primary" data-toggle="modal" data-target="#sendModal">Send Tokens</a>
+          <a href = "#" ng-click="openCardModal()" class="btn btn-primary bg-primary" data-toggle="modal">Send Tokens</a>
         </div>
       </div>
       <div class="height-lg"></div>

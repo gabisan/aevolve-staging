@@ -14,9 +14,11 @@ var grayLightest =  '#f8f9fa';
 angular
 .module('app', [
   'ui.router',
+  'ui.bootstrap',
   'oc.lazyLoad',
   'ncy-angular-breadcrumb',
   'angular-loading-bar',
+  'ngclipboard'
 ])
 .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
   cfpLoadingBarProvider.includeSpinner = false;

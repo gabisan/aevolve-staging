@@ -76,7 +76,7 @@ angular
       loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
         // you can lazy load controllers
         return $ocLazyLoad.load({
-          files: ['js/controllers/main.js']
+          files: ['js/controllers/dashboard.js']
         });
       }]
     }
