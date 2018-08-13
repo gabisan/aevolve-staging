@@ -32,10 +32,15 @@
   </div>
   <div class="height-lg"></div>
   <div class="card">
-    <div class="card-header card-dash-header">
+    <div class="card-header card-dash-header" ng-controller="countdownController">
       <span class="mb-5 text-uppercase">End of Private Sale:</span>
       <br />
-      <span id="ico-timer"></span>
+      <span id="ico-timer">
+        <span id="days"></span><span class='text-faded'>D</span>
+        <span id="hours"></span><span class='text-faded'>H</span>
+        <span id="minutes"></span><span class='text-faded'>M</span>
+        <span id="seconds"></span><span class='text-faded'>S</span>
+      </span>
     </div>
     <div class="card-body">
       <div class="height-lg"></div>

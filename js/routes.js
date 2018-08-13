@@ -19,36 +19,7 @@ angular
   .state('app', {
     abstract: true,
     templateUrl: 'views/common/layouts/full.html',
-    //page title goes here
-    ncyBreadcrumb: {
-      label: 'Root',
-      skip: true
-    },
-    resolve: {
-      loadCSS: ['$ocLazyLoad', function($ocLazyLoad) {
-        // you can lazy load CSS files
-        return $ocLazyLoad.load([{
-          serie: true,
-          name: 'Font Awesome',
-          files: ['css/fontawesome-all.css']
-        },{
-          serie: true,
-          name: 'Simple Line Icons',
-          files: ['css/simple-line-icons.css']
-        }]);
-      }],
-      loadPlugin: ['$ocLazyLoad', function ($ocLazyLoad) {
-        // you can lazy load files for an existing module
-        return $ocLazyLoad.load([{
-          serie: true,
-          name: 'chart.js',
-          files: [
-            'bower_components/chart.js/dist/Chart.min.js',
-            'bower_components/angular-chart.js/dist/angular-chart.min.js'
-          ]
-        }]);
-      }],
-    }
+    //page title goes her
   })
   .state('app.main', {
     url: '/dashboard',
@@ -58,28 +29,6 @@ angular
       label: 'Home',
     },
     //page subtitle goes here
-    params: { subtitle: 'Welcome to ROOT powerfull Bootstrap & AngularJS UI Kit' },
-    resolve: {
-      loadPlugin: ['$ocLazyLoad', function ($ocLazyLoad) {
-        // you can lazy load files for an existing module
-        return $ocLazyLoad.load([
-          {
-            serie: true,
-            name: 'chart.js',
-            files: [
-              'bower_components/chart.js/dist/Chart.min.js',
-              'bower_components/angular-chart.js/dist/angular-chart.min.js'
-            ]
-          },
-        ]);
-      }],
-      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-        // you can lazy load controllers
-        return $ocLazyLoad.load({
-          files: ['js/controllers/dashboard.js']
-        });
-      }]
-    }
   })
 
   //components

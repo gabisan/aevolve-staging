@@ -14,7 +14,8 @@
     "simple-line-icons": "latest",
     "chart.js": "^2.3.0",
     "angular-chart.js": "^1.0.3",
-    "ngclipboard": "^2.0.0"
+    "ngclipboard": "^2.0.0",
+    "angular-moment": "^1.2.0"
   },
   "private": true
 }

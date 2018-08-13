@@ -281,13 +281,81 @@ section {
 #mainNav .navbar-nav > li.nav-item > a.nav-link:focus.active:hover {
   background-color: transparent;
 }
+.navbar-collapse{
+    overflow-y: hidden;
+}
+.mobile-menu .upper-nav {
+    color: #fff;
+    padding: 15px;
+    /* border-bottom: 4px #79BD9A solid; */
+    border-top: 4px #79BD9A solid;
+    border-radius: 5px;
+}
+.mobile-menu .upper-nav .nav-account{
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.mobile-menu .upper-nav .nav-balance h5{
+    font-size: 15px;
+}
+.mobile-menu .list-group-item{
+  background: none;
+  border: none;
+  border-top: 1px solid rgba(0,0,0,.125);
+}
+.mobile-menu .list-group-item:first-child {
+    border-top-left-radius: 0;
+   border-top-right-radius: 0;
+    border-top: 1px solid rgba(0,0,0,.125);
+}
+.mobile-menu .list-group-item-action {
+    color: #fff;
+}
+.mobile-menu .list-group-item.active{
+  background-color: #fff;
+  color: #495057;
+}
+.mobile-menu .list-group-item:last-child {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
 
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
+
+.animated.hinge {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s; }
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn; }
 @media (min-width: 992px) {
   #mainNav {
     border-color: transparent;
     background-color: transparent;
   }
-
+  .mobile-menu {
+    display: none;
+  }
   .navbar-inner {
     border-bottom: 1px solid #2f4ff0 !important;
     background-color: #2f4ff0 !important;
@@ -675,7 +743,7 @@ header.masthead p {
   .navbar-nav {
     padding-top:15px;
 }
-#mainNav {padding-right: 0px !important;}
+/* #mainNav {padding-right: 0px !important;} */
   #mainNav .navbar-nav > li.nav-item > a.nav-link, #mainNav .navbar-nav > li.nav-item > a.nav-link:focus {
     padding:10px 15px !important;
 }
