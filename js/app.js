@@ -19,7 +19,8 @@ angular
   'ncy-angular-breadcrumb',
   'angular-loading-bar',
   'ngclipboard',
-  'angularMoment'
+  'angularMoment',
+  'ngAnimate'
 ])
 .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
   cfpLoadingBarProvider.includeSpinner = false;

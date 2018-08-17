@@ -565,6 +565,10 @@ header.masthead p {
 }
 
 /* // Overwrite Modal Bootsrtap */
+.modal.fade {
+  opacity: 0;
+  transition: opacity .15s linear;
+}
 .modal.fade.in {
   opacity: 1;
 }
