@@ -1,0 +1,47 @@
+<!-- Navbar -->
+<div ng-include="'views/common/wallet/navbar.html'"></div>
+
+<div class="app-body">
+  <section class="bg-gray">
+    <div class="container my-auto">
+
+      <div class="alert alert-success text-center" role="alert">
+        Purchase Completed!
+        <button type="button" class="close text-light" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="alert alert-warning text-center" role="alert">
+        To purchase tokens, please enable 2FA.
+        <button type="button" class="close text-light" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="alert alert-danger text-center" role="alert">
+        Account limited, please fill up KYC.
+        <button type="button" class="close text-light" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="height-lg"></div>
+      <div class="row">
+
+      <!-- Navigation -->
+      <div class="col-lg-4 order-2 order-sm-2 order-md-2 order-lg-1" ng-include="'views/common/wallet/sidebar-nav.html'"></div>
+
+    <!-- Main content -->
+      <ui-view class = "col-lg-8 order-1 order-sm-1 order-md-1 order-lg-2"></ui-view>
+
+        <!-- /.conainer-fluid -->
+      </div>
+    </div>
+  </section>
+
+
+    <!-- Aside Menu -->
+    <!-- <div ng-include="'views/common/aside.html'"></div> -->
+
+</div>
+
+<!-- Footer -->
+<div ng-include="'views/common/wallet/footer.html'"></div>
