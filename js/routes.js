@@ -18,26 +18,31 @@ angular
   .state('app', {
     abstract: true,
     templateUrl: 'views/common/layouts/full.html',
-    //page title goes her
   })
   .state('app.main', {
      url: '/',
     templateUrl: 'views/main.html',
-       //page title goes here
-       //page subtitle goes here
      })
  .state('app.resources', {
-   url: '/resources',
+   // url: '/resources',
    templateUrl: 'views/pages/resources.html',
   })
-  .state('app.components.faq', {
-    url: '/resources',
-    views: {
-            'resourceView@app': {
-                 templateUrl: 'views/components/faq.html',
-             }
-        }
-   })
+      .state('app.resources.faq', {
+        url: '/resources',
+        templateUrl: 'views/components/faq.html',
+      })
+      .state('app.resources.media', {
+        url: '/resources/media',
+        templateUrl: 'views/components/media.html',
+      })
+      .state('app.resources.developments', {
+        url: '/resources/developments',
+        templateUrl: 'views/components/developments.html',
+      })
+      .state('app.resources.concepts', {
+        url: '/resources/concepts',
+        templateUrl: 'views/components/concepts.html',
+      })
   .state('app.login', {
     url: '/login',
    templateUrl: 'views/pages/login.html',
