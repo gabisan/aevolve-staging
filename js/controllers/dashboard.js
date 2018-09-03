@@ -18,9 +18,7 @@ function dashboardCtrl($scope,$uibModal) {
       controller: 'ModalInstanceCtrl',
       windowClass: 'custom-modal',
       // size: '100px',
-      resolve: {
-
-      }
+      resolve: {}
     });
 
     /**
@@ -34,7 +32,8 @@ function dashboardCtrl($scope,$uibModal) {
 ModalInstanceCtrl.$inject = ['$scope','$uibModalInstance'];
 function ModalInstanceCtrl($scope,$uibModalInstance) {
 
-    $scope.close = function() {
-      $uibModalInstance.dismiss('cancel');
-    };
+  $scope.close = function() {
+    $uibModalInstance.dismiss('cancel');
+  };
+  
 }

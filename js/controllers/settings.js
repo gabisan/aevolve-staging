@@ -10,61 +10,59 @@ settingsCtrl.$inject = ['$scope','$uibModal'];
 function settingsCtrl($scope,$uibModal) {
 
     // Open 2Fa Code Authentication modal
-    $scope.openAuthentication = function() {
+  $scope.openAuthentication = function() {
 
-      var modalInstance = $uibModal.open({
-        // animation: false,
-        // backdrop: 'static',
-        templateUrl: 'views/common/modals/2fa-code-modal.html',
-        controller: 'ModalAuthenticatorCtrl',
-        windowClass: 'custom-modal',
+    var modalInstance = $uibModal.open({
+      // animation: false,
+      // backdrop: 'static',
+      templateUrl: 'views/common/modals/2fa-code-modal.html',
+      controller: 'ModalAuthenticatorCtrl',
+      windowClass: 'custom-modal',
 
-        // size: '100px',
-        resolve: {
-        }
-      });
+      // size: '100px',
+      resolve: {}
+    });
 
-      modalInstance.result.then(function() {});
+    modalInstance.result.then(function() {});
 
-    };
+  };
 
 
     // Open 2Fa Code Authentication modal
-    $scope.openAuthentication2 = function() {
+  $scope.openAuthentication2 = function() {
 
-      var modalInstance = $uibModal.open({
-        // animation: false,
-        // backdrop: 'static',
-        templateUrl: 'views/common/modals/authenticator-app-modal.html',
-        controller: 'ModalAuthenticatorCtrl2',
-        windowClass: 'custom-modal',
+    var modalInstance = $uibModal.open({
+      // animation: false,
+      // backdrop: 'static',
+      templateUrl: 'views/common/modals/authenticator-app-modal.html',
+      controller: 'ModalAuthenticatorCtrl2',
+      windowClass: 'custom-modal',
 
-        // size: '100px',
-        resolve: {
-        }
-      });
-      
-      modalInstance.result.then(function() {});
+      // size: '100px',
+      resolve: {
+      }
+    });
+    
+    modalInstance.result.then(function() {});
 
-    };
-
+  };
 
 }
 
 ModalAuthenticatorCtrl.$inject = ['$scope','$uibModalInstance'];
 function ModalAuthenticatorCtrl($scope,$uibModalInstance) {
 
-    $scope.close = function() {
-      $uibModalInstance.dismiss('cancel');
-    };
+  $scope.close = function() {
+    $uibModalInstance.dismiss('cancel');
+  };
 
 }
 
 ModalAuthenticatorCtrl2.$inject = ['$scope','$uibModalInstance'];
 function ModalAuthenticatorCtrl2($scope,$uibModalInstance) {
 
-    $scope.close = function() {
-      $uibModalInstance.dismiss('cancel');
-    };
+  $scope.close = function() {
+    $uibModalInstance.dismiss('cancel');
+  };
 
 }

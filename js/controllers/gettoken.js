@@ -18,8 +18,7 @@ function gettokenCtrl($scope,$uibModal) {
       controller: 'getTokenModalCtrl',
       windowClass: 'custom-modal',
       // size: '100px',
-      resolve: {
-      }
+      resolve: {}
     });
 
     modalInstance.result.then(function() {});
@@ -36,8 +35,7 @@ function gettokenCtrl($scope,$uibModal) {
       windowClass: 'custom-modal',
 
       // size: '100px',
-      resolve: {
-      }
+      resolve: {}
     });
 
     modalInstance.result.then(function() {});
@@ -48,17 +46,17 @@ function gettokenCtrl($scope,$uibModal) {
 getTokenModalCtrl.$inject = ['$scope','$uibModalInstance'];
 function getTokenModalCtrl($scope,$uibModalInstance) {
 
-    $scope.close = function() {
-      $uibModalInstance.dismiss('cancel');
-    };
+  $scope.close = function() {
+    $uibModalInstance.dismiss('cancel');
+  };
 
 }
 
 joinWhitelistModalCtrl.$inject = ['$scope','$uibModalInstance'];
 function joinWhitelistModalCtrl($scope,$uibModalInstance) {
 
-    $scope.close = function() {
-      $uibModalInstance.dismiss('cancel');
-    };
+  $scope.close = function() {
+    $uibModalInstance.dismiss('cancel');
+  };
 
 }

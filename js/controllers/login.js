@@ -20,5 +20,4 @@ function loginCtrl($scope, $rootScope, $http, $window, $state, AuthService) {
        console.log(response);
     });
   }
-
 }
