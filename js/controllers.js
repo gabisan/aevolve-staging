@@ -2,52 +2,36 @@
 angular
 .module('app')
 .controller('navController', navController)
-.controller('countdownController', countdownController);
+.controller('scrollController', scrollController);
 
 navController.$inject = ['$scope'];
-
 function navController($scope) {
   $scope.isNavCollapsed = true;
 };
 
-countdownController.$inject = ['$scope','moment'];
-function countdownController($scope,moment) {
-
-  setInterval( function() {
-    var countDownDate = new Date("Sep 5, 2018 15:37:25");
-    var now           = moment(new Date()).toDate();
-
-    var e = moment(countDownDate).toDate();
-    var d = $scope.calculateTime(now, e);
-
-    var day       = document.getElementById('days');
-    day.innerHTML = d.days;
-
-    var hour       = document.getElementById('hours');
-    hour.innerHTML = d.hours;
-
-    var minute       = document.getElementById('minutes');
-    minute.innerHTML = d.minutes;
-
-    var second = document.getElementById('seconds');
-    second.innerHTML = d.seconds;
-
-  }, 1000);
-
-  $scope.calculateTime = function (start, end) {
-
-    var t       = Date.parse(end) - Date.parse(start);
-    var seconds = Math.floor((t / 1000) % 60);
-    var minutes = Math.floor((t / 1000 / 60) % 60);
-    var hours   = Math.floor((t / (1000 * 60 * 60)) % 24);
-    var days    = Math.floor(t / (1000 * 60 * 60 * 24));
-
-    return {
-      'total': t,
-      'days': days,
-      'hours': hours,
-      'minutes': minutes,
-      'seconds': seconds
-    };
-  }
+scrollController.$inject = ['$scope', '$document', '$state', '$rootScope'];
+function scrollController($scope, $document, $state, $rootScope) {
+  // console.log($rootScope.$stateNow);
+  // if ($rootScope.$stateNow === 'app.main'){
+  //   $scope.mainNav = true;
+  // }
+    // var duration = 2000; //milliseconds
+    // var offset = 30; //pixels; adjust for floating menu, context etc
+    // //Scroll to #some-id with 30 px "padding"
+    // //Note: Use this in a directive, not with document.getElementById
+    // var roadMapAnchor = angular.element(document.getElementById('roadmap'));
+    // $scope.toroadMapAnchor = function() {
+    //   $document.scrollToElementAnimated(roadMapAnchor, 30, 2000);
+    // }
+    // var contactAnchor = angular.element(document.getElementById('contact'));
+    // $scope.tocontactAnchor = function() {
+    //   $document.scrollToElementAnimated(contactAnchor, 30, 2000);
+    // }
+    // var aboutAnchor = angular.element(document.getElementById('about'));
+    // $scope.toaboutAnchor = function() {
+    //   $document.scrollToElementAnimated(aboutAnchor, 30, 2000);
+    // }
+    // $(document).ready(function() {
+    //   $("html, body").animate({scrollTop:$(window.location.hash).offset().top-offsetSize }, 500);
+    // });
 };

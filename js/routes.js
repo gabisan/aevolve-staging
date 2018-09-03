@@ -69,6 +69,16 @@ angular
   .state('wallet', {
     abstract: true,
     templateUrl: 'views/common/layouts/wallet.html',
+    resolve: { 
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+        // you can lazy load controllers
+        return $ocLazyLoad.load({
+          files: [
+            'js/controllers/wallet.js',
+          ]
+        });
+      }]
+    }
     //page title goes her
   })
 
@@ -76,9 +86,7 @@ angular
     url: '/wallet',
     templateUrl: 'views/wallet/main-wallet.html',
     //page title goes here
-    ncyBreadcrumb: {
-      label: 'Home',
-    },
+
     //page subtitle goes here
   })
 

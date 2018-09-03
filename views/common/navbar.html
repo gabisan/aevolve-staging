@@ -10,19 +10,36 @@
         <i class="fas fa-bars text-light"></i>
       </span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
+    <div class="collapse navbar-collapse" id="navbarResponsive" ng-controller="scrollController">
+      <ul ng-if = "mainNav == true" class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#about">About</a>
+          <a class="nav-link js-scroll-trigger" href="#about" du-smooth-scroll du-scrollspy>About</a>
         </li>
         <li class="nav-item">
           <a href = "#" class="nav-link js-scroll-trigger" ui-sref-active="active" ui-sref="app.resources.faq">Resources</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#roadmap">Roadmap</a>
+          <a class="nav-link" href="#roadmap" du-smooth-scroll du-scrollspy>Roadmap</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+          <a class="nav-link" href="#contact" du-smooth-scroll du-scrollspy>Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger btn-buy" href="#" ui-sref-active="active" ui-sref="app.register">Join ICO</a>
+        </li>
+      </ul>
+      <ul ng-if = "mainNav != true" class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#" ui-sref-active="active" ui-sref="app.main({'#': 'about'})">About</a>
+        </li>
+        <li class="nav-item">
+          <a href = "#" class="nav-link js-scroll-trigger" ui-sref-active="active" ui-sref="app.resources.faq">Resources</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" ui-sref-active="active" ui-sref="app.main({'#': 'roadmap'})">Roadmap</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" ui-sref-active="active" ui-sref="app.main({'#': 'contact'})">Contact</a>
         </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger btn-buy" href="#" ui-sref-active="active" ui-sref="app.register">Join ICO</a>

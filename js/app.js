@@ -20,7 +20,8 @@ angular
   'angular-loading-bar',
   'ngclipboard',
   'angularMoment',
-  'ngAnimate'
+  'ngAnimate',
+  'duScroll'
 ])
 .config(['cfpLoadingBarProvider', '$httpProvider', function(cfpLoadingBarProvider, $httpProvider) {
 
@@ -45,19 +46,28 @@ angular
 
 }])
 .run(['$rootScope', '$state', '$stateParams', '$transitions', '$location', function($rootScope, $state, $stateParams, $transitions, $location) {
-
+  // $transitions.onSuccess({} ,function(){
+  //       $rootScope.$stateNow = $state.current.name ;
+  // });
   $rootScope.$on('$stateChangeSuccess',function(){
     document.body.scrollTop = document.documentElement.scrollTop = 0;
   });
 
   $rootScope.token = "";
 
-  $transitions.onSuccess({} ,function(){  
-    
+  $transitions.onSuccess({} ,function(){
+
     var currentUser = JSON.parse(localStorage.getItem('user'));
-    
+    console.log($state.current.name);
+      if ($state.current.name === 'app.main'){
+        console.log('true');
+        $rootScope.mainNav = true;
+      } else {
+          $rootScope.mainNav = false;
+      }
+
     // if(currentUser) {
-      
+
     //     $rootScope.authenticated = true;
     //     $rootScope.currentUser = currentUser;
 
@@ -77,5 +87,7 @@ angular
 
   $rootScope.$state = $state;
   return $rootScope.$stateParams = $stateParams;
-  
-}]);
+
+}])
+.value('duScrollDuration', 2000)
+.value('duScrollOffset', 30);
