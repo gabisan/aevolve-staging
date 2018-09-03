@@ -7,52 +7,42 @@ angular
 
 gettokenCtrl.$inject = ['$scope','$uibModal'];
 function gettokenCtrl($scope,$uibModal) {
+
   // Open card modal
-    $scope.openGetTokenModal = function() {
+  $scope.openGetTokenModal = function() {
 
-      var modalInstance = $uibModal.open({
-          // animation: false,
-          // backdrop: 'static',
-          templateUrl: 'views/common/modals/get-token-modal.html',
-          controller: 'getTokenModalCtrl',
-          windowClass: 'custom-modal',
+    var modalInstance = $uibModal.open({
+      // animation: false,
+      // backdrop: 'static',
+      templateUrl: 'views/common/modals/get-token-modal.html',
+      controller: 'getTokenModalCtrl',
+      windowClass: 'custom-modal',
+      // size: '100px',
+      resolve: {
+      }
+    });
 
-            // size: '100px',
-            resolve: {
-            }
-      });
-      modalInstance.result.then(function() {
+    modalInstance.result.then(function() {});
+   
+  };
 
-      });
-      // uibmodalInstance.result.then(function () {
-      //     //products = selectedItems;
-      // }, function () {
-      //     $log.info('Modal dismissed at: ' + new Date());
-      // });
-    };
+  $scope.openJoinWhitelistModal = function() {
 
-    $scope.openJoinWhitelistModal = function() {
+    var modalInstance = $uibModal.open({
+      // animation: false,
+      // backdrop: 'static',
+      templateUrl: 'views/common/modals/join-whitelist-modal.html',
+      controller: 'getTokenModalCtrl',
+      windowClass: 'custom-modal',
 
-      var modalInstance = $uibModal.open({
-          // animation: false,
-          // backdrop: 'static',
-          templateUrl: 'views/common/modals/join-whitelist-modal.html',
-          controller: 'getTokenModalCtrl',
-          windowClass: 'custom-modal',
+      // size: '100px',
+      resolve: {
+      }
+    });
 
-            // size: '100px',
-            resolve: {
-            }
-      });
-      modalInstance.result.then(function() {
-
-      });
-      // uibmodalInstance.result.then(function () {
-      //     //products = selectedItems;
-      // }, function () {
-      //     $log.info('Modal dismissed at: ' + new Date());
-      // });
-    };
+    modalInstance.result.then(function() {});
+  
+  };
 }
 
 getTokenModalCtrl.$inject = ['$scope','$uibModalInstance'];
@@ -63,6 +53,7 @@ function getTokenModalCtrl($scope,$uibModalInstance) {
     };
 
 }
+
 joinWhitelistModalCtrl.$inject = ['$scope','$uibModalInstance'];
 function joinWhitelistModalCtrl($scope,$uibModalInstance) {
 

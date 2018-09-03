@@ -13,24 +13,19 @@ function settingsCtrl($scope,$uibModal) {
     $scope.openAuthentication = function() {
 
       var modalInstance = $uibModal.open({
-          // animation: false,
-          // backdrop: 'static',
-          templateUrl: 'views/common/modals/2fa-code-modal.html',
-          controller: 'ModalAuthenticatorCtrl',
-          windowClass: 'custom-modal',
+        // animation: false,
+        // backdrop: 'static',
+        templateUrl: 'views/common/modals/2fa-code-modal.html',
+        controller: 'ModalAuthenticatorCtrl',
+        windowClass: 'custom-modal',
 
-            // size: '100px',
-            resolve: {
-            }
+        // size: '100px',
+        resolve: {
+        }
       });
-      modalInstance.result.then(function() {
 
-      });
-      // uibmodalInstance.result.then(function () {
-      //     //products = selectedItems;
-      // }, function () {
-      //     $log.info('Modal dismissed at: ' + new Date());
-      // });
+      modalInstance.result.then(function() {});
+
     };
 
 
@@ -38,24 +33,19 @@ function settingsCtrl($scope,$uibModal) {
     $scope.openAuthentication2 = function() {
 
       var modalInstance = $uibModal.open({
-          // animation: false,
-          // backdrop: 'static',
-          templateUrl: 'views/common/modals/authenticator-app-modal.html',
-          controller: 'ModalAuthenticatorCtrl2',
-          windowClass: 'custom-modal',
+        // animation: false,
+        // backdrop: 'static',
+        templateUrl: 'views/common/modals/authenticator-app-modal.html',
+        controller: 'ModalAuthenticatorCtrl2',
+        windowClass: 'custom-modal',
 
-            // size: '100px',
-            resolve: {
-            }
+        // size: '100px',
+        resolve: {
+        }
       });
-      modalInstance.result.then(function() {
+      
+      modalInstance.result.then(function() {});
 
-      });
-      // uibmodalInstance.result.then(function () {
-      //     //products = selectedItems;
-      // }, function () {
-      //     $log.info('Modal dismissed at: ' + new Date());
-      // });
     };
 
 

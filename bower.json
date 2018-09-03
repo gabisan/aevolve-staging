@@ -15,7 +15,9 @@
     "chart.js": "^2.3.0",
     "angular-chart.js": "^1.0.3",
     "ngclipboard": "^2.0.0",
-    "angular-moment": "^1.2.0"
+    "angular-moment": "^1.2.0",
+    "angular-animate": "1.7.3",
+    "angular-bootstrap": "2.5.0"
   },
   "private": true
 }

@@ -20,37 +20,37 @@ angular
     templateUrl: 'views/common/layouts/full.html',
   })
   .state('app.main', {
-     url: '/',
+    url: '/',
     templateUrl: 'views/main.html',
-     })
+  })
  .state('app.resources', {
    // url: '/resources',
    templateUrl: 'views/pages/resources.html',
   })
-      .state('app.resources.faq', {
-        url: '/resources',
-        templateUrl: 'views/components/faq.html',
-      })
-      .state('app.resources.media', {
-        url: '/resources/media',
-        templateUrl: 'views/components/media.html',
-      })
-      .state('app.resources.developments', {
-        url: '/resources/developments',
-        templateUrl: 'views/components/developments.html',
-      })
-      .state('app.resources.concepts', {
-        url: '/resources/concepts',
-        templateUrl: 'views/components/concepts.html',
-      })
+  .state('app.resources.faq', {
+    url: '/resources',
+    templateUrl: 'views/components/faq.html',
+  })
+  .state('app.resources.media', {
+    url: '/resources/media',
+    templateUrl: 'views/components/media.html',
+  })
+  .state('app.resources.developments', {
+    url: '/resources/developments',
+    templateUrl: 'views/components/developments.html',
+  })
+  .state('app.resources.concepts', {
+    url: '/resources/concepts',
+    templateUrl: 'views/components/concepts.html',
+  })
   .state('app.login', {
     url: '/login',
-   templateUrl: 'views/pages/login.html',
-   })
+    templateUrl: 'views/pages/login.html',
+  })
   .state('app.register', {
-     url: '/register',
-    templateUrl: 'views/pages/register.html',
-    })
+   url: '/register',
+  templateUrl: 'views/pages/register.html',
+  })
 
  .state('app.components.gettokens', {
    url: '/gettokens',
