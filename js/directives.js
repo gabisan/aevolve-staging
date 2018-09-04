@@ -12,7 +12,7 @@ angular
 .directive('button', cardCollapseDirective)
 .directive('comparePasswordTo', comparePasswordTo)
 .directive('compareEmailTo', compareEmailTo)
-
+.directive('changeClassOnScroll', changeClassOnScroll)
 //Prevent click if href="#"
 function preventClickDirective() {
   var directive = {
@@ -263,6 +263,25 @@ function compareEmailTo() {
       scope.$watch("confirmEmail", function() {
         modelVal.$validate();
       });
+    }
+  };
+}
+
+function changeClassOnScroll($window) {
+  return {
+    restrict: 'A',
+    scope: {
+        offset: "@",
+        scrollClass: "@"
+    },
+    link: function(scope, element) {
+        angular.element($window).bind("scroll", function() {
+            if (this.pageYOffset >= parseInt(scope.offset)) {
+                element.addClass(scope.scrollClass);
+            } else {
+                element.removeClass(scope.scrollClass);
+            }
+        });
     }
   };
 }
