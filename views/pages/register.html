@@ -8,26 +8,32 @@
           <span>Already have an account?
           <a href="login.html">Login here</a></span><br />
           <div class="height-sm"></div>
-          <form class="form-signin" action="#">
+          <form class="form-signin" name="vm.form" ng-submit="auth.register()" role="form">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Email" required />
+              <input type="text" class="form-control" ng-model="auth.firstname" name="firstname" id="firstname" placeholder="First Name" required />
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Confirm Email" required />
+              <input type="text" class="form-control" ng-model="auth.lastname" name="lastname" id="lastname" placeholder="Last Name" required />
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Password" required />
+              <input type="text" class="form-control" ng-model="auth.email" name="email" id="email" placeholder="Email" required />
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Confirm Password" required />
+              <input type="text" class="form-control" ng-model="auth.confirmEmail" name="confirmEmail" id="confirmEmail" placeholder="Confirm Email" compare-email-to="auth.email" required />
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control"  ng-model="auth.password" name="passowrd" id="password" placeholder="Password" required />
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control"  ng-model="auth.confirmPassword" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" compare-password-to="auth.password" required />
             </div>
             <div class="g-recaptcha" data-sitekey="your_site_key"></div>
             <div class="height-md"></div>
             <label class="checkbox pull-left">
-              <input type="checkbox" value="remember-me"> Subscribe to newsletters
+              <input type="checkbox" value="remember-me" ng-model="auth.newsletter"> Subscribe to newsletters
             </label>
             <label class="checkbox pull-left">
-              <input type="checkbox" value="remember-me">
+              <input type="checkbox" value="remember-me" ng-model="auth.agree">
               <a href="#">I agree the terms and conditions</a>
             </label>
             <div class="height-md"></div>

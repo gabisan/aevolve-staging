@@ -25,7 +25,13 @@ function dashboardCtrl($scope,$uibModal) {
      * @form modal result
      * @instance modalInstance
      */
-    modalInstance.result.then(function() {});
+    modalInstance.result
+    .then(function() {})
+    .catch(function(res) {
+      if (!(res === 'cancel' || res === 'escape key press' || res === 'backdrop click')) {
+        throw res;
+      }
+    });
   };
 }
 

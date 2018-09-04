@@ -53,13 +53,15 @@ angular
   .state('app.login', {
     url: '/login',
     templateUrl: 'views/pages/login.html',
-    controller: 'loginCtrl',
-    controllerAs: 'login'
+    controller: 'authCtrl',
+    controllerAs: 'auth'
   })
 
   .state('app.register', {
     url: '/register',
     templateUrl: 'views/pages/register.html',
+    controller: 'authCtrl',
+    controllerAs: 'auth'
   })
 
   .state('app.components.gettokens', {

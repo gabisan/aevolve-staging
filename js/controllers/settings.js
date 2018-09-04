@@ -23,7 +23,13 @@ function settingsCtrl($scope,$uibModal) {
       resolve: {}
     });
 
-    modalInstance.result.then(function() {});
+    modalInstance.result
+    .then(function() {})
+    .catch(function(res) {
+      if (!(res === 'cancel' || res === 'escape key press' || res === 'backdrop click')) {
+        throw res;
+      }
+    });
 
   };
 
@@ -43,7 +49,13 @@ function settingsCtrl($scope,$uibModal) {
       }
     });
     
-    modalInstance.result.then(function() {});
+    modalInstance.result
+    .then(function() {})
+    .catch(function(res) {
+      if (!(res === 'cancel' || res === 'escape key press' || res === 'backdrop click')) {
+        throw res;
+      }
+    });
 
   };
 

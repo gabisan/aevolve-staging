@@ -10,6 +10,8 @@ angular
 .directive('toggle', bootstrapTooltipsPopoversDirective)
 .directive('tab', bootstrapTabsDirective)
 .directive('button', cardCollapseDirective)
+.directive('comparePasswordTo', comparePasswordTo)
+.directive('compareEmailTo', compareEmailTo)
 
 //Prevent click if href="#"
 function preventClickDirective() {
@@ -223,4 +225,44 @@ function cardCollapseDirective() {
       })
     }
   }
+}
+
+function comparePasswordTo() {
+
+  return {
+    require: "ngModel",
+    scope: {
+      confirmPassword: "=comparePasswordTo"
+    },
+    link: function(scope, element, attributes, modelVal) {
+
+      modelVal.$validators.comparePasswordTo = function(val) {
+        return val == scope.confirmPassword;
+      };
+
+      scope.$watch("confirmPassword", function() {
+        modelVal.$validate();
+      });
+    }
+  };
+}
+
+function compareEmailTo() {
+
+  return {
+    require: "ngModel",
+    scope: {
+      confirmEmail: "=compareEmailTo"
+    },
+    link: function(scope, element, attributes, modelVal) {
+
+      modelVal.$validators.compareEmailTo = function(val) {
+        return val == scope.confirmEmail;
+      };
+
+      scope.$watch("confirmEmail", function() {
+        modelVal.$validate();
+      });
+    }
+  };
 }
