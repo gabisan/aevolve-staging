@@ -18,7 +18,7 @@
         };
 
         service.verify = function(data) {
-           return $http.post( aevolve.url + '/users/verify/', data);
+           return $http.post( aevolve.url + '/users/verify', data);
         };
 
       	return service;
