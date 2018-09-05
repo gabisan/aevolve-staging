@@ -1,20 +1,20 @@
-<header class="masthead text-white d-flex">
+<header class="masthead text-white d-flex" ng-controller = "scrollRevealController">
   <div class="container my-auto animatedParent animateOnce" data-sequence="500">
     <div class="row">
       <div class="col-lg-6">
         <div class="height-l"></div>
-        <h1 class="animated fadeInUp go" data-id="1">
+        <h1 ng-scroll-reveal="optionsgoOpacity" class="animated" data-id="1">
           <strong>The Future of Medical Breakthroughs</strong>
         </h1>
-        <div class="text-faded animated fadeInUp go" data-id="2">
+        <div ng-scroll-reveal="optionsgoOpacity" class="animated" data-id="2">
             <span>AN INITIAL COIN OFFERING IN SUPPORT OF HUMAN HEALTH ADVANCEMENT</span>
         </div>
         <div class="height-lg"></div>
-        <p class="animated fadeInUp go" data-id="2">Aevolve Token (AEVX) is the first token created to support the most advanced breakthroughs in medical science.
+        <p ng-scroll-reveal="optionsgoUp" class="animated" data-id="2">Aevolve Token (AEVX) is the first token created to support the most advanced breakthroughs in medical science.
           Cutting-edge discoveries meet blockchain-driven markets to create the most efficient healthcare innovation ecosystem
           on the planet.</p>
         <div class="height-md"></div>
-        <a class="btn btn-xl btn-white js-scroll-trigger animated fadeInUp go" ng-click="openJoinWhitelistModal()">
+        <a ng-scroll-reveal="optionsgoUp" class="btn btn-xl btn-white js-scroll-trigger animated" ng-click="openJoinWhitelistModal()">
             JOIN OUR WHITELIST</a>
         <!-- <a class="btn btn-primary btn-xl js-scroll-trigger animated fadeInUp" data-id="2" href="developments.html" style="background: rgba(149, 222, 249, 0.35);  margin-right: 10px;" >
           DEVELOPMENTS</a>
@@ -23,7 +23,7 @@
         <div class="height-lg"></div>
       </div>
       <div class="col-lg-1"></div>
-      <div class="col-lg-5 animated fadeInUp go" data-id="3">
+      <div ng-scroll-reveal="optionsgoUp" class="col-lg-5 animated" data-id="3">
         <p>
           <strong class="text-faded text-uppercase">Be part of a global healthcare innovation movement.</strong>
         </p>
@@ -139,7 +139,7 @@
     <div class="height-xl"></div>
     <div class="row">
       <div class="col-md-2">
-        <img class="sr-icons" src="img/5reasons-01.png" style="width:100px;" />
+        <img ng-scroll-reveal="optionsgoZoom" class="sr-icons" src="img/5reasons-01.png" style="width:100px;" />
         <div class="height-md"></div>
       </div>
       <div class="col-md-10">
@@ -153,7 +153,7 @@
     <div class="height-xl"></div>
     <div class="row">
       <div class="col-md-2">
-        <img class="sr-icons" src="img/5reasons-03.png" style="width:100px;" />
+        <img ng-scroll-reveal="optionsgoZoom" class="sr-icons" src="img/5reasons-03.png" style="width:100px;" />
         <div class="height-md"></div>
       </div>
       <div class="col-md-10">
@@ -170,7 +170,7 @@
     <div class="height-xl"></div>
     <div class="row">
       <div class="col-md-2">
-        <img class="sr-icons" src="img/5reasons-02.png" style="width:100px;" />
+        <img ng-scroll-reveal="optionsgoZoom" class="sr-icons" src="img/5reasons-02.png" style="width:100px;" />
         <div class="height-md"></div>
       </div>
       <div class="col-md-10">
@@ -188,7 +188,7 @@
     <div class="height-xl"></div>
     <div class="row">
       <div class="col-md-2">
-        <img class="sr-icons" src="img/5reasons-05.png" style="width:100px;" />
+        <img ng-scroll-reveal="optionsgoZoom" class="sr-icons" src="img/5reasons-05.png" style="width:100px;" />
         <div class="height-md"></div>
       </div>
       <div class="col-md-10">
@@ -204,7 +204,7 @@
     <div class="height-xl"></div>
     <div class="row">
       <div class="col-md-2">
-        <img class="sr-icons" src="img/5reasons-04.png" style="width:100px;" />
+        <img ng-scroll-reveal="optionsgoZoom" class="sr-icons" src="img/5reasons-04.png" style="width:100px;" />
         <div class="height-md"></div>
       </div>
       <div class="col-md-10">
@@ -239,7 +239,7 @@
         <ul class="timeline">
             <li class="timeline-inverted">
                 <div class="timeline-image">
-                  <img class="sr-icons" src="img/road-map-01.png" />
+                  <img ng-scroll-reveal="optionsgoZoom" class="sr-icons" src="img/road-map-01.png" />
                   <div class="height-md"></div>
                 </div>
                 <div class="timeline-panel">
@@ -257,7 +257,7 @@
               </li>
           <li>
             <div class="timeline-image">
-              <img class="sr-icons" src="img/road-map-02.png" />
+              <img ng-scroll-reveal="optionsgoZoom" class="sr-icons" src="img/road-map-02.png" />
               <div class="height-md"></div>
             </div>
             <div class="timeline-panel">
@@ -273,7 +273,7 @@
           </li>
           <li class="timeline-inverted">
             <div class="timeline-image">
-              <img class="sr-icons" src="img/road-map-03.png" />
+              <img ng-scroll-reveal="optionsgoZoom" class="sr-icons" src="img/road-map-03.png" />
               <div class="height-md"></div>
             </div>
             <div class="timeline-panel">
@@ -292,7 +292,7 @@
           </li>
           <li>
             <div class="timeline-image">
-              <img class="sr-icons" src="img/road-map-04.png" />
+              <img ng-scroll-reveal="optionsgoZoom" class="sr-icons" src="img/road-map-04.png" />
               <div class="height-md"></div>
             </div>
             <div class="timeline-panel">
@@ -309,7 +309,7 @@
           </li>
           <li class="timeline-inverted">
               <div class="timeline-image">
-                <img class="sr-icons" src="img/road-map-05.png" />
+                <img ng-scroll-reveal="optionsgoZoom" class="sr-icons" src="img/road-map-05.png" />
                 <div class="height-md"></div>
               </div>
               <div class="timeline-panel">
@@ -327,7 +327,7 @@
             </li>
             <li>
               <div class="timeline-image">
-                <img class="sr-icons" src="img/road-map-06.png" />
+                <img ng-scroll-reveal="optionsgoZoom" class="sr-icons" src="img/road-map-06.png" />
                 <div class="height-md"></div>
               </div>
               <div class="timeline-panel">
@@ -346,7 +346,7 @@
             </li>
           <li class="timeline-inverted">
             <div class="timeline-image">
-              <img class="sr-icons" src="img/road-map-07.png" />
+              <img ng-scroll-reveal="optionsgoZoom" class="sr-icons" src="img/road-map-07.png" />
               <div class="height-md"></div>
             </div>
             <div class="timeline-panel">
@@ -364,7 +364,7 @@
           </li>
           <li>
               <div class="timeline-image">
-                <img class="sr-icons" src="img/road-map-08.png" />
+                <img ng-scroll-reveal="optionsgoZoom" class="sr-icons" src="img/road-map-08.png" />
                 <div class="height-md"></div>
               </div>
               <div class="timeline-panel">
@@ -386,7 +386,7 @@
           <li class="timeline-inverted">
             <div class="timeline-image">
               <h4>
-                <img class="sr-icons" src="img/road-map-09.png" />
+                <img ng-scroll-reveal="optionsgoZoom" class="sr-icons" src="img/road-map-09.png" />
                 <div class="height-md"></div>
             </div>
             <div class="timeline-panel">

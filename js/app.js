@@ -21,7 +21,8 @@ angular
   'ngclipboard',
   'angularMoment',
   'ngAnimate',
-  'duScroll'
+  'duScroll',
+  'ngScrollReveal'
 ])
 .config(['cfpLoadingBarProvider', '$httpProvider', function(cfpLoadingBarProvider, $httpProvider) {
 

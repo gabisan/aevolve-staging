@@ -2,15 +2,64 @@
 angular
 .module('app')
 .controller('navController', navController)
-.controller('scrollController', scrollController);
+.controller('scrollRevealController', scrollRevealController);
+navController.$inject = ['$scope','$window'];
+function navController($scope,$window) {
+  if ($window.innerWidth > 991) {
+   $scope.isNavCollapsed = false;
+  } else {
+      $scope.isNavCollapsed = true;
+  }
+   console.log($scope.isNavCollapsed);
+};
+scrollRevealController.$inject = ['$scope', 'ScrollReveal', '$timeout' ];
+function scrollRevealController($scope, ScrollReveal, $timeout) {
+  $scope.optionsgoUp = {
+    origin: 'bottom',
+    distance : '200px',
+    delay: 50,
+    scale: 1,
+    duration: 3000,
+    reset: true
+  }
+  $scope.optionsgoOpacity = {
+    distance: '0px',
+    delay: 50,
+    reset: true,
+    opacity: 0,
+    scale: 1,
+    duration: 1000
+  }
 
-navController.$inject = ['$scope'];
-function navController($scope) {
-  $scope.isNavCollapsed = true;
+  $scope.optionsgoZoom = {
+    distance: '0px',
+    delay: 100,
+    scale: 0.1,
+    duration: 1000,
+    reset: true
+  }
+  // $scope.optionsSequence = {
+  //   origin: 'left',
+  //   distance : '150px',
+  //   delay: 30,
+  //   scale: 1,
+  //   duration: 2000,
+  //   reset: true,
+  //   sequence: {
+  //     selector: '',
+  //     interval: 500
+  //   }
+  // }
+  // $timeout(function(){
+  //   ScrollReveal.reveal(".fourthTest", {duration: 900}, 300);
+  // })
+  // $scope.replay = function(){
+  //   ScrollReveal.reveal("#idTest", $scope.options);
+  // }
 };
 
-scrollController.$inject = ['$scope', '$document', '$state', '$rootScope'];
-function scrollController($scope, $document, $state, $rootScope) {
+// scrollController.$inject = ['$scope', '$document', '$state', '$rootScope'];
+// function scrollController($scope, $document, $state, $rootScope) {
   // console.log($rootScope.$stateNow);
   // if ($rootScope.$stateNow === 'app.main'){
   //   $scope.mainNav = true;
@@ -34,4 +83,4 @@ function scrollController($scope, $document, $state, $rootScope) {
     // $(document).ready(function() {
     //   $("html, body").animate({scrollTop:$(window.location.hash).offset().top-offsetSize }, 500);
     // });
-};
+// };
