@@ -2,32 +2,37 @@
 <!-- <div class="modal fade" id="whitelistModal" tabindex="-1" role="dialog" aria-labelledby="whitelistModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content"> -->
-      <div class="modal-header card-dash-header">
+      <div class="modal-body text-center bg-light" style="border-radius:7px;">
+        <div class="height-md"></div>
+        <img src="img/aevolve-token-dark.png">
+        <div class="height-sm"></div>
         Join the Aevolve Token Whitelist
-        <button type="button" class="close" ng-click = "close()" aria-label="Close">
-          <span aria-hidden="true" class="text-white">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body text-center bg-light">
+        <div class="height-lg"></div>
+        <form class="form-signin" id="whitelist-form" data-parsley-validate="" novalidate="">
+        <div class="form-group">
+          <input class="form-control" id="name" type="text" placeholder="First Name" required="required" data-parsley-trigger="change" data-parsley-minlength="2">
+        </div>
+        <div class="form-group">
+          <input class="form-control" id="name" type="text" placeholder="Last Name" required="required" data-parsley-trigger="change" data-parsley-minlength="2">
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="Email" name="email" data-parsley-trigger="change" required="">
+        </div>
+        <div class="form-group">
+            <input type="tel" class="form-control" placeholder="Phone" name="phone" data-parsley-type="number" data-parsley-trigger="change" required="">
+        </div>
+        <div class="form-group">
+            <select class="custom-select" id="inputGroupSelect03">
+              <option selected="">Country</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
         <div class="height-md"></div>
-        <div class="form-group">
-          <input class="form-control" id="name" type="text" placeholder="First Name" required="required">
-        </div>
-        <div class="form-group">
-          <input class="form-control" id="name" type="text" placeholder="Last Name" required="required">
-        </div>
-        <div class="form-group">
-          <input class="form-control" id="name" type="text" placeholder="Email" required="required">
-        </div>
-        <div class="form-group">
-          <input class="form-control" id="name" type="text" placeholder="Phone">
-        </div>
-        <div class="form-group">
-          <input class="form-control" id="name" type="text" placeholder="Country" required="required">
-        </div>
+        <button type="button" class="btn btn-lg bg-primary text-white" data-dismiss="modal" data-toggle="modal" data-target="#status-modal"><i class="fas fa-arrow-circle-right"></i> Join The Medical Revolution </button>
         <div class="height-md"></div>
-        <button type="button" class="btn bg-primary text-white" data-dismiss="modal" data-toggle="modal" data-target="#status-modal">Join</button>
-        <div class="height-md"></div>
+        </form>
       </div>
     <!-- </div>
   </div>
