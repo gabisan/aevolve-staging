@@ -97,6 +97,8 @@ img::-moz-selection {
 a.bg-primary, button.bg-primary {background-color: #79BD9A !important;}
 a.bg-primary:focus, a.bg-primary:hover, button.bg-primary:focus, button.bg-primary:hover {background-color:#49ad79 !important;}
 
+a.text-red:hover {color:#fff; background:#C7321C;}
+
 .bg-dark {background-color: #212529 !important;}
 .bg-light {background-color:#f7f7f7 !important;}
 .bg-gray {background-color:#f1f1f1 !important;}
