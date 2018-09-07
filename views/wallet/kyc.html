@@ -1,197 +1,199 @@
 <div class="order-first order-sm-first order-md-first order-lg-last animated fadeIn">
   <div class="tab-content" id="myTabContent">
-        <div class="tab-pane show active" id="kyc-tab" role="tabpanel" aria-labelledby="kyc-tab">
-          <h4>KYC</h4>
-          <p>The KYC portion allows us to verify our users and validate all data. Please take the time to fill up your
-                KYC details. Thank you.</p>
-          <div class="height-sm"></div>
-          <div class="card">
-            <div class="card-header card-dash-header">
-              Level 1 User details
+    <div class="tab-pane show active" id="kyc-tab" role="tabpanel" aria-labelledby="kyc-tab">
+      <h4>KYC</h4>
+      <p>The KYC portion allows us to verify our users and validate all data. Please take the time to fill up your
+            KYC details. Thank you.</p>
+      <div class="height-sm"></div>
+      <div class="card">
+        <div class="card-header card-dash-header">
+          Level 1 User details
+        </div>
+        <div class="card-body">
+          <form class="form-signin" name="vm.form" ng-submit="kyc.levelOne()" role="form">
+            Name
+            <div class="form-group">
+              <input class="form-control" id="firstName" name="firstName" type="text" placeholder="First Name" ng-model="kyc.user.firstName" required />
             </div>
-            <div class="card-body">
-              Name
-              <div class="form-group">
-                <input class="form-control" id="name" type="text" placeholder="First Name" required="required">
-              </div>
-              <div class="form-group">
-                <input class="form-control" id="name" type="text" placeholder="Last Name" required="required">
-              </div>
-              <div class="height-md"></div>
-              Address
-              <div class="form-group">
-                <input class="form-control" id="name" type="text" placeholder="House No." required="required">
-              </div>
-              <div class="form-group">
-                <input class="form-control" id="name" type="text" placeholder="City State" required="required">
-              </div>
-              <div class="form-group">
+            <div class="form-group">
+              <input class="form-control" id="lastName" name="lastName" type="text" placeholder="Last Name" ng-model="kyc.user.lastName" required />
+            </div>
+            <div class="height-md"></div>
+            Address
+            <div class="form-group">
+              <input class="form-control" id="address" name="address" type="text" placeholder="House No." ng-model="kyc.user.address" required />
+            </div>
+            <div class="form-group">
+              <input class="form-control" id="city" name="city" type="text" placeholder="City State" ng-model="kyc.user.city" required />
+            </div>
+            <div class="form-group">
+              <select class="custom-select" id="country" name="country" ng-model="kyc.user.country">
+                <option selected>Country</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input class="form-control" id="postcode" name="postcode" type="text" placeholder="Zip Code" ng-model="kyc.user.postcode" required />
+            </div>
+            Birthdate
+            <div class="form-group">
+              <div class="input-group">
                 <select class="custom-select" id="inputGroupSelect03">
-                  <option selected>Country</option>
+                  <option selected>Month</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
                 </select>
-              </div>
-              <div class="form-group">
-                <input class="form-control" id="name" type="text" placeholder="Zip Code" required="required">
-              </div>
-              Birthdate
-              <div class="form-group">
-                <div class="input-group">
-                  <select class="custom-select" id="inputGroupSelect03">
-                    <option selected>Month</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                  <select class="custom-select" id="inputGroupSelect03">
-                    <option selected>Day</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                  <select class="custom-select" id="inputGroupSelect03">
-                    <option selected>Year</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                </div>
-              </div>
-              <a href="#" class="btn btn-primary bg-primary">Submit</a>
-            </div>
-          </div>
-          <div class="height-lg"></div>
-          <div class="card">
-            <div class="card-header card-dash-header">
-              Level 2 Identification
-            </div>
-            <div class="card-body">
-              <div class="form-group">
                 <select class="custom-select" id="inputGroupSelect03">
-                  <option selected>ID Type</option>
+                  <option selected>Day</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+                <select class="custom-select" id="inputGroupSelect03">
+                  <option selected>Year</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
                 </select>
               </div>
-              <div class="form-group">
-                <input class="form-control" id="name" type="text" placeholder="ID Number" required="required">
-              </div>
-              <div class="form-group">
-                <label for="exampleFormControlFile1">Upload Photo of ID</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-              </div>
-              <a href="#" class="btn btn-primary bg-primary">Submit</a>
             </div>
-          </div>
-          <div class="height-lg"></div>
-          <div class="card">
-            <div class="card-header card-dash-header">
-              Level 3 Photo + Keyword
-            </div>
-            <div class="card-body">
-              <div class="form-group">
-                <label for="exampleFormControlFile1">Upload Photo</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-              </div>
-              <a href="#" class="btn btn-primary bg-primary">Submit</a>
-            </div>
-          </div>
-          <div class="height-lg"></div>
-          <div class="card">
-            <div class="card-header card-dash-header">
-              Level 1 User details
-            </div>
-            <div class="card-body">
-              Name
-              <div class="form-group">
-                <input class="form-control" id="name" type="text" value="John" required="required" disabled>
-              </div>
-              <div class="form-group">
-                <input class="form-control" id="name" type="text" value="Cena" required="required" disabled>
-              </div>
-              <div class="height-md"></div>
-              Address
-              <div class="form-group">
-                <input class="form-control" id="name" type="text" value="77 Street Block" required="required" disabled>
-              </div>
-              <div class="form-group">
-                <input class="form-control" id="name" type="text" value="City State" disabled>
-              </div>
-              <div class="form-group">
-                <select class="custom-select" id="inputGroupSelect03" disabled>
-                  <option selected>Zanzibar</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <input class="form-control" id="name" type="text" value="10101" required="required" disabled>
-              </div>
-              Birthdate
-              <div class="form-group">
-                <div class="input-group">
-                  <select class="custom-select" id="inputGroupSelect03" disabled>
-                    <option selected>February</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                  <select class="custom-select" id="inputGroupSelect03" disabled>
-                    <option selected>29</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                  <select class="custom-select" id="inputGroupSelect03" disabled>
-                    <option selected>1985</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                </div>
-              </div>
-              <a href="#" class="btn btn-primary bg-primary">Edit</a>
-            </div>
-          </div>
-          <div class="height-lg"></div>
-          <div class="card">
-            <div class="card-header card-dash-header">
-              Level 2 Identification
-            </div>
-            <div class="card-body">
-              <div class="form-group">
-                <select class="custom-select disabled" id="inputGroupSelect03" disabled>
-                  <option selected>Drivers License</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <input class="form-control " id="name" type="text" placeholder="ID Number" required="required" value="G1234567" disabled>
-              </div>
-              <div class="form-group">
-                <img src="..." class="img-fluid" style="min-height:300px; min-width:100%; background:#ebebeb;">
-              </div>
-              <a href="#" class="btn btn-primary bg-primary">Edit</a>
-            </div>
-          </div>
-          <div class="height-lg"></div>
-          <div class="card">
-            <div class="card-header card-dash-header">
-              Level 3 Photo + Keyword
-            </div>
-            <div class="card-body">
-              <div class="form-group">
-                <img src="..." class="img-fluid" style="min-height:300px; min-width:100%; background:#ebebeb;">
-              </div>
-              <a href="#" class="btn btn-primary bg-primary">Edit</a>
-            </div>
-          </div>
+            <button type="submit" class="btn btn-primary bg-primary">Submit</button>
+          </form>
+        </div>
       </div>
+      <div class="height-lg"></div>
+      <div class="card">
+        <div class="card-header card-dash-header">
+          Level 2 Identification
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <select class="custom-select" id="inputGroupSelect03">
+              <option selected>ID Type</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input class="form-control" id="name" type="text" placeholder="ID Number" required="required">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Upload Photo of ID</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+          </div>
+          <a href="#" class="btn btn-primary bg-primary">Submit</a>
+        </div>
+      </div>
+      <div class="height-lg"></div>
+      <div class="card">
+        <div class="card-header card-dash-header">
+          Level 3 Photo + Keyword
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Upload Photo</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+          </div>
+          <a href="#" class="btn btn-primary bg-primary">Submit</a>
+        </div>
+      </div>
+      <div class="height-lg"></div>
+      <div class="card">
+        <div class="card-header card-dash-header">
+          Level 1 User details
+        </div>
+        <div class="card-body">
+          Name
+          <div class="form-group">
+            <input class="form-control" id="name" type="text" value="John" required="required" disabled>
+          </div>
+          <div class="form-group">
+            <input class="form-control" id="name" type="text" value="Cena" required="required" disabled>
+          </div>
+          <div class="height-md"></div>
+          Address
+          <div class="form-group">
+            <input class="form-control" id="name" type="text" value="77 Street Block" required="required" disabled>
+          </div>
+          <div class="form-group">
+            <input class="form-control" id="name" type="text" value="City State" disabled>
+          </div>
+          <div class="form-group">
+            <select class="custom-select" id="inputGroupSelect03" disabled>
+              <option selected>Zanzibar</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input class="form-control" id="name" type="text" value="10101" required="required" disabled>
+          </div>
+          Birthdate
+          <div class="form-group">
+            <div class="input-group">
+              <select class="custom-select" id="inputGroupSelect03" disabled>
+                <option selected>February</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+              <select class="custom-select" id="inputGroupSelect03" disabled>
+                <option selected>29</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+              <select class="custom-select" id="inputGroupSelect03" disabled>
+                <option selected>1985</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          </div>
+          <a href="#" class="btn btn-primary bg-primary">Edit</a>
+        </div>
+      </div>
+      <div class="height-lg"></div>
+      <div class="card">
+        <div class="card-header card-dash-header">
+          Level 2 Identification
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <select class="custom-select disabled" id="inputGroupSelect03" disabled>
+              <option selected>Drivers License</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input class="form-control " id="name" type="text" placeholder="ID Number" required="required" value="G1234567" disabled>
+          </div>
+          <div class="form-group">
+            <img src="..." class="img-fluid" style="min-height:300px; min-width:100%; background:#ebebeb;">
+          </div>
+          <a href="#" class="btn btn-primary bg-primary">Edit</a>
+        </div>
+      </div>
+      <div class="height-lg"></div>
+      <div class="card">
+        <div class="card-header card-dash-header">
+          Level 3 Photo + Keyword
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <img src="..." class="img-fluid" style="min-height:300px; min-width:100%; background:#ebebeb;">
+          </div>
+          <a href="#" class="btn btn-primary bg-primary">Edit</a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

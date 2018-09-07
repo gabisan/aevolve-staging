@@ -64,10 +64,17 @@ angular
     controllerAs: 'auth'
   })
 
+  .state('app.verify', {
+    url: '/verify/{code}',
+    template: ' ',
+    controller: 'authCtrl',
+  })
+
   .state('app.components.gettokens', {
     url: '/gettokens',
     templateUrl: 'views/components/gettokens.html',
   })
+  
   .state('wallet', {
     abstract: true,
     templateUrl: 'views/common/layouts/wallet.html',
@@ -112,6 +119,8 @@ angular
   .state('wallet.kyc', {
     url: '/wallet/kyc',
     templateUrl: 'views/wallet/kyc.html',
+    controller: 'kycCtrl',
+    controllerAs: 'kyc',
     ncyBreadcrumb: {
       label: 'KYC'
     }
@@ -153,4 +162,5 @@ angular
     url: '/500',
     templateUrl: 'views/pages/500.html'
   })
+
 }]);

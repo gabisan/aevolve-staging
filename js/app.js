@@ -32,6 +32,14 @@ angular
   $httpProvider.defaults.headers.post["Content-Type"] = "application/json";
   $httpProvider.defaults.headers.put["Content-Type"]  = "application/json";
 
+  if (localStorage.getItem('token'))
+  {
+    var token = localStorage.getItem('token');
+
+    $httpProvider.defaults.headers.post["Authorization"] = "Bearer " + token;
+    $httpProvider.defaults.headers.put["Authorization"]  = "Bearer " + token;
+  }
+  
   // $httpProvider.defaults.transformRequest.unshift(function (data, headersGetter) {
   //   var key, result = [];
 
@@ -54,35 +62,33 @@ angular
     document.body.scrollTop = document.documentElement.scrollTop = 0;
   });
 
-  $rootScope.token = "";
-
   $transitions.onSuccess({} ,function(){
 
     var currentUser = JSON.parse(localStorage.getItem('user'));
-    console.log($state.current.name);
-      if ($state.current.name === 'app.main'){
-        console.log('true');
-        $rootScope.mainNav = true;
-      } else {
-          $rootScope.mainNav = false;
-      }
+    
+    if ($state.current.name === 'app.main') {
+    
+      $rootScope.mainNav = true;
+    } else {
 
-    // if(currentUser) {
+      $rootScope.mainNav = false;
+    }
 
-    //     $rootScope.authenticated = true;
-    //     $rootScope.currentUser = currentUser;
+    if (currentUser) {
 
-    //     if($location.path() == '/login' || $location.path() == '/register')
-    //         $state.go('app.main');
+        $rootScope.authenticated = true;
+        $rootScope.currentUser = currentUser;
 
-    // } else {
+        if($location.path() == '/login' || $location.path() == '/register') 
+            $state.go('app.main');
 
-    //     $rootScope.authenticated = false;
+    } else {
 
-    //     if($location.path().split('/')[1] != 'login')
-    //         $state.go('app.login');
+        $rootScope.authenticated = false;
 
-    // }
+        if($location.path() == '/wallet')
+            $state.go('app.login');
+    }
 
   });
 

@@ -9,8 +9,17 @@
       function UserService($http, $window, $rootScope, $timeout, $location, aevolve) {
       	var service = {};
 
-        service.me = function(data) {
-          return $http.get( aevolve.url + '/user');
+        service.me = function() {
+          return $http.get( aevolve.url + '/user', {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Basic ' + localStorage.getItem('token')
+            }
+          });
+        };
+
+        service.kyc = function(data, level) {
+          return $http.post( aevolve.url + '/user/kyc/' + level, data);
         };
        
       	return service;
