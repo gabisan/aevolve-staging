@@ -2,6 +2,36 @@
   <div class="container my-auto">
     <div class="row justify-content-sm-center">
       <div class="col-xs-10 col-sm-8 col-md-7 col-lg-5 col-xl-4">
+
+          <div ng-show="successSignup" class="alert alert-success text-center" role="alert">
+            Sign success!
+            <button type="button" class="close text-light" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+
+         <div ng-show="isVerified" class="alert alert-success text-center" role="alert">
+            Email verified!
+            <button type="button" class="close text-light" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+
+          <div ng-show="unverifiedEmail" class="alert alert-danger text-center" role="alert">
+            Error please verify your email.
+            <button type="button" class="close text-light" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+
+          <div ng-show="errorLogin" class="alert alert-danger text-center" role="alert">
+            Wrong Email Address or Password.
+            <button type="button" class="close text-light" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+
+        <div class="height-md"></div>
         <div class="account-box">
           <h2>Login</h2>
           <div class="height-md"></div>

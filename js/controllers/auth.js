@@ -6,34 +6,26 @@ angular
 authCtrl.$inject = ['$scope', '$rootScope', '$http', '$window', '$state', '$uibModal', '$timeout', 'AuthService', 'UserService', 'aevolve'];
 
 function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeout, AuthService, UserService, aevolve) {
-
 	var vm = this;
 
 	if ($state.params.code)
 	{
-		$scope.isVerified = true;
-
 		AuthService.verify({code: $state.params.code}).then(function(response) {
 
-			if (response.status == 200)
-			{
-				var verificationModal = $uibModal.open({
-		      templateUrl: 'views/common/modals/verification-modal.html',
-		      controller: authModalCtrl,
-		      controllerAs: 'auth',
-		      size: '100px',
-		      resolve: { }
-		    });
-
-		    verificationModal.result.then(function () {}, function () {
-		      $state.go('app.login');
-		    });
-			}
+		  $scope.isVerified = true;
+			$state.go('app.login');
 			
-		});
+		}).catch(function(response) {
 
+				$state.go('app.login');
+				$scope.unverifiedEmail = true;
+				$scope.errorMesssage   = response.error;
+		});
 	}
 
+	/**
+	 * @function Login
+	 */
 	vm.login = function () {
 
 		var data = {
@@ -64,26 +56,28 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 				});
 			}
 
+    }).catch(function(response) {
+
 			/**
 			 * @desc unverified email
 			 */
-			if (response.status == 200)
+			if (response.status == 412)
 			{
-				$uibModal.open({
-		      templateUrl: '',
-		      controller: authModalCtrl,
-		      controllerAs: 'auth',
-		      size: '100px',
-		      resolve: {
-		      }
-		    });
+				$scope.unverifiedEmail = true;
+				$scope.errorMesssage   = response.error;
 			}
+			else {
+				$scope.errorLogin = true;
+				$scope.errorMesssage   = response.error;
+			}
+
     });
   }
 
   vm.register = function () {
   	
   	if (typeof vm.agree == 'undefined' || !vm.agree) {
+
 			var modalInstance = $uibModal.open({
 	    
 	      templateUrl: 'views/common/modals/auth-modal.html',
@@ -104,6 +98,8 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 			    throw res;
 			  }
 			});
+
+			return false;
   	}
 
   	var data = {
@@ -115,13 +111,42 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 		};
 
 		AuthService.register(data).then(function (response) {
-     
-      if (response.status == 200)
-			{
-				$state.go('app.login');
-			}
+  		
+  		var modalInstance = $uibModal.open({
+	    
+	      templateUrl: 'views/common/modals/success-modal.html',
+	      controller: 'ModalInstanceCtrl',
+	      windowClass: 'custom-modal',
+	      size: '100px',
+	      resolve: {}
+	    }).catch(function(res) {
+			  if (!(res === 'cancel' || res === 'escape key press' || res === 'backdrop click')) {
+			    throw res;
+			  }
+			});
+
+  		modalInstance.result.then(function(){}, function() {
+  			$state.go('app.login');
+  		});
+			
+    }).catch(function(response) {
+    	console.log(response);
+
+    	$scope.errorRegistration = true;
+    	vm.getMesssage(response);
     });
   }
+
+  vm.getMesssage = function(obj) {
+
+		angular.forEach(obj, function(value, key) {
+			if (key == 'data')
+			{
+				$scope.message = value.error;
+			}
+		});
+  }
+
 }
 
 authModalCtrl.$inject = ['$scope', '$uibModalInstance'];

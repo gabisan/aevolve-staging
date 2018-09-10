@@ -29,35 +29,20 @@
             <div class="form-group">
               <select class="custom-select" id="country" name="country" ng-model="kyc.user.country">
                 <option selected>Country</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="Philippines">Philippines</option>
+                <option value="US">US</option>
+                <option value="UK">UK</option>
               </select>
             </div>
             <div class="form-group">
-              <input class="form-control" id="postcode" name="postcode" type="text" placeholder="Zip Code" ng-model="kyc.user.postcode" required />
+              <input class="form-control" id="postalcode" name="postalcode" type="text" placeholder="Zip Code" ng-model="kyc.user.postalcode" required />
             </div>
             Birthdate
             <div class="form-group">
               <div class="input-group">
-                <select class="custom-select" id="inputGroupSelect03">
-                  <option selected>Month</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-                <select class="custom-select" id="inputGroupSelect03">
-                  <option selected>Day</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-                <select class="custom-select" id="inputGroupSelect03">
-                  <option selected>Year</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
+                <datepicker date-format="yyyy-MM-dd" selector="form-control" >
+                  <input class="form-control" ng-model="kyc.user.birthday" type="text" placeholder="Date of Birth" width="50%"/>
+                </datepicker>
               </div>
             </div>
             <button type="submit" class="btn btn-primary bg-primary">Submit</button>

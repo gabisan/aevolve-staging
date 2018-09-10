@@ -19,6 +19,7 @@ angular
   'ncy-angular-breadcrumb',
   'angular-loading-bar',
   'ngclipboard',
+  '720kb.datepicker',
   'angularMoment',
   'ngAnimate',
   'duScroll',

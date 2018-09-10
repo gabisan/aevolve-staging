@@ -20,7 +20,7 @@
     "angular-bootstrap": "2.5.0",
     "angular-scroll": "^1.0.2",
     "ngScrollReveal": "^1.0.1",
-    "scrollreveal": "^4.0.0"
+    "angularjs-datepicker": "^2.1.23"
   },
   "private": true
 }
