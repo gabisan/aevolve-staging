@@ -13,6 +13,7 @@ angular
 .directive('comparePasswordTo', comparePasswordTo)
 .directive('compareEmailTo', compareEmailTo)
 .directive('changeClassOnScroll', changeClassOnScroll)
+.directive('file', file)
 //Prevent click if href="#"
 function preventClickDirective() {
   var directive = {
@@ -284,4 +285,22 @@ function changeClassOnScroll($window) {
         });
     }
   };
+}
+
+function file() {
+    return {
+        restrict: 'AE',
+        scope: {
+            file: '@'
+        },
+        link: function(scope, el, attrs){
+            el.bind('change', function(event){
+                var files = event.target.files;
+                var file = files[0];
+                scope.file = file;
+                scope.$parent.file = file;
+                scope.$apply();
+            });
+        }
+    };
 }

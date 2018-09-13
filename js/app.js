@@ -33,13 +33,13 @@ angular
   $httpProvider.defaults.headers.post["Content-Type"] = "application/json";
   $httpProvider.defaults.headers.put["Content-Type"]  = "application/json";
 
-  if (localStorage.getItem('token'))
-  {
-    var token = localStorage.getItem('token');
-
-    $httpProvider.defaults.headers.post["Authorization"] = "Bearer " + token;
-    $httpProvider.defaults.headers.put["Authorization"]  = "Bearer " + token;
-  }
+  // if (localStorage.getItem('token'))
+  // {
+  //   var token = localStorage.getItem('token');
+  //
+  //   $httpProvider.defaults.headers.post["Authorization"] = "Bearer " + token;
+  //   $httpProvider.defaults.headers.put["Authorization"]  = "Bearer " + token;
+  // }
   
   // $httpProvider.defaults.transformRequest.unshift(function (data, headersGetter) {
   //   var key, result = [];

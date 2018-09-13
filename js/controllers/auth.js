@@ -15,7 +15,7 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 		  $scope.isVerified = true;
 			$state.go('app.login');
 			
-		}).catch(function(response) {
+		}).catch((response) => {
 
 				$state.go('app.login');
 				$scope.unverifiedEmail = true;
@@ -33,7 +33,7 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 			password :  (vm.password) ? vm.password : null
 		};
 
-		AuthService.login(data).then(function (response) {
+		AuthService.login(data).then((response) => {
 
 			/**
 			 * @desc successfull login
@@ -42,11 +42,10 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 			{
 				localStorage.setItem("token", response.data.token);
 
-				UserService.me().then(function(res) 
-				{
+				UserService.me().then((res) => {
 					angular.forEach(res, function(value, key) 
 					{
-						if (key == 'data')
+						if (key === 'data')
 						{
 							console.log(value.user);
 							localStorage.setItem("user", JSON.stringify(value.user));
@@ -56,23 +55,30 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 				});
 			}
 
-    }).catch(function(response) {
+    }).catch((response) => {
+		/**
+		 * @desc unverified email
+		 */
+		if (response.status === 412)
+		{
 
-			/**
-			 * @desc unverified email
-			 */
-			if (response.status == 412)
-			{
-				$scope.unverifiedEmail = true;
-				$scope.errorMesssage   = response.error;
-			}
-			else {
-				$scope.errorLogin = true;
-				$scope.errorMesssage   = response.error;
-			}
-
-    });
-  }
+			$scope.unverifiedEmail = true;
+			swal(
+				'Oops...',
+				'Error please verify your email.',
+				'info'
+			);
+		}
+		else {
+			$scope.errorLogin = true;
+			swal(
+				'Oops...',
+				'Wrong Email Address or Password.',
+				'error'
+			);
+		}
+	});
+  };
 
   vm.register = function () {
   	
@@ -92,8 +98,8 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 	     * @instance modalInstance
 	     */
 	    modalInstance.result
-	    .then(function() {})
-	    .catch(function(res) {
+	    .then(() => {})
+	    .catch((res) => {
 			  if (!(res === 'cancel' || res === 'escape key press' || res === 'backdrop click')) {
 			    throw res;
 			  }
@@ -110,7 +116,7 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 			newletter : (vm.newletter) ? vm.newletter : null,
 		};
 
-		AuthService.register(data).then(function (response) {
+		AuthService.register(data).then((response) => {
   		
   		var modalInstance = $uibModal.open({
 	    
@@ -119,25 +125,30 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 	      windowClass: 'custom-modal',
 	      size: '100px',
 	      resolve: {}
-	    }).catch(function(res) {
+	    }).catch((res) => {
 			  if (!(res === 'cancel' || res === 'escape key press' || res === 'backdrop click')) {
 			    throw res;
 			  }
 			});
 
-  		modalInstance.result.then(function(){}, function() {
+  		modalInstance.result.then(() => {}, () => {
+            swal(
+                'Success!',
+                'Please check your email for verification.',
+                'success'
+            );
   			$state.go('app.login');
   		});
 			
-    }).catch(function(response) {
+    }).catch((response) => {
     	console.log(response);
 
     	$scope.errorRegistration = true;
     	vm.getMesssage(response);
     });
-  }
+  };
 
-  vm.getMesssage = function(obj) {
+  vm.getMesssage = (obj) => {
 
 		angular.forEach(obj, function(value, key) {
 			if (key == 'data')

@@ -27,11 +27,12 @@
               <input class="form-control" id="city" name="city" type="text" placeholder="City State" ng-model="kyc.user.city" required />
             </div>
             <div class="form-group">
-              <select class="custom-select" id="country" name="country" ng-model="kyc.user.country">
-                <option selected>Country</option>
-                <option value="Philippines">Philippines</option>
-                <option value="US">US</option>
-                <option value="UK">UK</option>
+              <select class="custom-select" 
+                id="country" 
+                name="country" 
+                ng-model="kyc.user.country"
+                ng-options="option.name for option in kyc.countries track by option.id"
+                >
               </select>
             </div>
             <div class="form-group">
@@ -41,7 +42,7 @@
             <div class="form-group">
               <div class="input-group">
                 <datepicker date-format="yyyy-MM-dd" selector="form-control" >
-                  <input class="form-control" ng-model="kyc.user.birthday" type="text" placeholder="Date of Birth" width="50%"/>
+                  <input class="form-control" ng-model="kyc.user.birthdate" type="text" placeholder="Date of Birth" width="50%"/>
                 </datepicker>
               </div>
             </div>
@@ -55,22 +56,25 @@
           Level 2 Identification
         </div>
         <div class="card-body">
-          <div class="form-group">
-            <select class="custom-select" id="inputGroupSelect03">
-              <option selected>ID Type</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <input class="form-control" id="name" type="text" placeholder="ID Number" required="required">
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlFile1">Upload Photo of ID</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-          </div>
-          <a href="#" class="btn btn-primary bg-primary">Submit</a>
+          <form class="form-signin" name="vm.form" ng-submit="kyc.levelTwo()" role="form">
+            <div class="form-group">
+              <select class="custom-select"
+                      id="idtype"
+                      name="idtype"
+                      ng-model="kyc.user.idtype"
+                      ng-options="option.name for option in kyc.idlist track by option.id">
+              </select>
+            </div>
+            <div class="form-group">
+              <input class="form-control" id="name" type="text" placeholder="ID Number" required="required">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Upload Photo of ID</label>
+              <!--<input type="file" class="form-control-file" id="exampleFormControlFile1">-->
+              <input class="form-control" type="file" ng-model="file" name="file" file />
+            </div>
+            <button type="submit" class="btn btn-primary bg-primary">Submit</button>
+          </form>
         </div>
       </div>
       <div class="height-lg"></div>
