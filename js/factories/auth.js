@@ -21,6 +21,10 @@
            return $http.post( aevolve.url + '/users/verify', data);
         };
 
+        service.logout = function() {
+          $window.localStorage.clear();
+        }
+
       	return service;
       }
   })();

@@ -10,21 +10,11 @@
       	var service = {};
 
         service.me = function() {
-          return $http.get( aevolve.url + '/user', {
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Basic ' + localStorage.getItem('token')
-            }
-          });
+          return $http.get( aevolve.url + '/user' );
         };
 
         service.kyc = function(data, level) {
-          return $http.post( aevolve.url + '/user/kyc/' + level, data, {
-              headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': 'Basic ' + localStorage.getItem('token')
-              }
-          });
+          return $http.post( aevolve.url + '/user/kyc/' + level, data );
         };
        
       	return service;

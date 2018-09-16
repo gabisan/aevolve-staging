@@ -12,14 +12,23 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 	{
 		AuthService.verify({code: $state.params.code}).then(function(response) {
 
-		  $scope.isVerified = true;
-			$state.go('app.login');
+    	swal(
+            'Success!',
+            '<p style="text-transform: capitalize;">Email verified!</p>',
+            'success'
+        );
+
+		  $state.go('app.login');
 			
 		}).catch((response) => {
 
-				$state.go('app.login');
-				$scope.unverifiedEmail = true;
-				$scope.errorMesssage   = response.error;
+			$state.go('app.login');
+			var mess = response.data.error;
+    	swal(
+            'Error!',
+            '<p style="text-transform: capitalize;">' +mess+ '</p>',
+            'error'
+        );
 		});
 	}
 
@@ -63,19 +72,23 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 		{
 
 			$scope.unverifiedEmail = true;
+
 			swal(
 				'Oops...',
 				'Error please verify your email.',
 				'info'
 			);
+			
 		}
 		else {
 			$scope.errorLogin = true;
+
 			swal(
 				'Oops...',
 				'Wrong Email Address or Password.',
 				'error'
 			);
+
 		}
 	});
   };
@@ -84,26 +97,11 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
   	
   	if (typeof vm.agree == 'undefined' || !vm.agree) {
 
-			var modalInstance = $uibModal.open({
-	    
-	      templateUrl: 'views/common/modals/auth-modal.html',
-	      controller: 'ModalInstanceCtrl',
-	      windowClass: 'custom-modal',
-	      size: '100px',
-	      resolve: {}
-	    });
-
-	    /**
-	     * @form modal result
-	     * @instance modalInstance
-	     */
-	    modalInstance.result
-	    .then(() => {})
-	    .catch((res) => {
-			  if (!(res === 'cancel' || res === 'escape key press' || res === 'backdrop click')) {
-			    throw res;
-			  }
-			});
+			swal(
+				'Oops...',
+				'Please Agree to terms and conditions',
+				'info'
+			);
 
 			return false;
   	}
@@ -118,45 +116,24 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 
 		AuthService.register(data).then((response) => {
   		
-  		var modalInstance = $uibModal.open({
-	    
-	      templateUrl: 'views/common/modals/success-modal.html',
-	      controller: 'ModalInstanceCtrl',
-	      windowClass: 'custom-modal',
-	      size: '100px',
-	      resolve: {}
-	    }).catch((res) => {
-			  if (!(res === 'cancel' || res === 'escape key press' || res === 'backdrop click')) {
-			    throw res;
-			  }
-			});
+				swal(
+            'Success!',
+            'Please check your email for verification.',
+            'success'
+        );
 
-  		modalInstance.result.then(() => {}, () => {
-            swal(
-                'Success!',
-                'Please check your email for verification.',
-                'success'
-            );
   			$state.go('app.login');
-  		});
 			
     }).catch((response) => {
-    	console.log(response);
 
-    	$scope.errorRegistration = true;
-    	vm.getMesssage(response);
+    	var mess = response.data.error;
+    	swal(
+            'Error!',
+            '<p style="text-transform: capitalize;">' +mess+ '</p>',
+            'error'
+        );
     });
   };
-
-  vm.getMesssage = (obj) => {
-
-		angular.forEach(obj, function(value, key) {
-			if (key == 'data')
-			{
-				$scope.message = value.error;
-			}
-		});
-  }
 
 }
 

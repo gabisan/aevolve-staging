@@ -22,7 +22,8 @@
     "ngScrollReveal": "^1.0.1",
     "angularjs-datepicker": "^2.1.23",
     "sweetalert2": "^7.26.28",
-    "angular-sweetalert": "angular-h-sweetalert#^2.0.1"
+    "angular-sweetalert": "angular-h-sweetalert#^2.0.1",
+    "angular-base64-upload": "^0.1.23"
   },
   "private": true
 }

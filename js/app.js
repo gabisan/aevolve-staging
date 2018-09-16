@@ -23,7 +23,8 @@ angular
   'angularMoment',
   'ngAnimate',
   'duScroll',
-  'ngScrollReveal'
+  'ngScrollReveal',
+  'naif.base64'
 ])
 .config(['cfpLoadingBarProvider', '$httpProvider', function(cfpLoadingBarProvider, $httpProvider) {
 
@@ -32,6 +33,34 @@ angular
 
   $httpProvider.defaults.headers.post["Content-Type"] = "application/json";
   $httpProvider.defaults.headers.put["Content-Type"]  = "application/json";
+
+  $httpProvider.interceptors.push(['$q', '$location', '$window', '$state', function ($q, $location, $window, $state) {
+     return {
+         'request': function (config) {
+             config.headers = config.headers || {};
+             if (localStorage.getItem('token')) {
+                 config.headers.Authorization = 'Bearer ' + localStorage.getItem('token');
+             }
+             return config;
+         },
+         'responseError': function (response) {
+
+             if (response.status === 401) {
+
+                swal(
+                  'Oops...',
+                  'Unauthorized access.',
+                  'error'
+                ).then(()=> {
+                  $window.localStorage.clear();
+                  $state.go('app.login');
+                });
+             }
+
+             return $q.reject(response);
+         }
+     };
+  }]);
 
   // if (localStorage.getItem('token'))
   // {
@@ -89,6 +118,7 @@ angular
 
         if($location.path() == '/wallet')
             $state.go('app.login');
+
     }
 
   });

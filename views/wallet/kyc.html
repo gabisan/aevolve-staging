@@ -30,6 +30,7 @@
               <select class="custom-select" 
                 id="country" 
                 name="country" 
+                ng-init="kyc.user.country"
                 ng-model="kyc.user.country"
                 ng-options="option.name for option in kyc.countries track by option.id"
                 >
@@ -56,6 +57,7 @@
           Level 2 Identification
         </div>
         <div class="card-body">
+          <!-- <img src="data:image/jpeg;base64,{{ kyc.img }}" /> -->
           <form class="form-signin" name="vm.form" ng-submit="kyc.levelTwo()" role="form">
             <div class="form-group">
               <select class="custom-select"
@@ -66,12 +68,12 @@
               </select>
             </div>
             <div class="form-group">
-              <input class="form-control" id="name" type="text" placeholder="ID Number" required="required">
+              <input class="form-control" id="name" type="text" ng-model="kyc.user.idno" placeholder="ID Number" required="required">
             </div>
             <div class="form-group">
               <label for="exampleFormControlFile1">Upload Photo of ID</label>
-              <!--<input type="file" class="form-control-file" id="exampleFormControlFile1">-->
-              <input class="form-control" type="file" ng-model="file" name="file" file />
+
+              <input class="form-control" type="file" ng-model="file" name="file" base-sixty-four-input />
             </div>
             <button type="submit" class="btn btn-primary bg-primary">Submit</button>
           </form>
@@ -80,14 +82,35 @@
       <div class="height-lg"></div>
       <div class="card">
         <div class="card-header card-dash-header">
-          Level 3 Photo + Keyword
+          Level 3 Document + Photo
         </div>
         <div class="card-body">
-          <div class="form-group">
-            <label for="exampleFormControlFile1">Upload Photo</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-          </div>
-          <a href="#" class="btn btn-primary bg-primary">Submit</a>
+          <p>We request you to take a clear selfie holding up a valid ID and the properly filled-up KYC form that you downloaded.
+          </p>
+          <div class="height-md"></div>
+          <form class="form-signin" name="vm.form" ng-submit="kyc.levelThree()" role="form">
+            <a href="doc/kyc-form-english.pdf" class="btn btn-primary" download><i class="far fa-file-pdf"></i>
+              Download KYC Form</a>
+            <div class="height-lg"></div>
+            <div class="divider"></div>
+            <div class="height-lg"></div>
+            <div class="form-group">
+              <label for="exampleFormControlFile1">1. Upload scanned filled up document</label>
+              <input class="form-control" type="file" ng-model="document" name="document" base-sixty-four-input />
+            </div>
+            <div class="height-lg"></div>
+            <div class="divider"></div>
+            <div class="height-md"></div>
+            <div class="form-group">
+              <label for="exampleFormControlFile1">2. Upload Photo</label>
+              <div class="height-md"></div>
+              <img src="img/img-submit-photo.jpg" />
+              <div class="height-lg"></div>
+              <input class="form-control" type="file" ng-model="selfie" name="selfie" base-sixty-four-input />
+            </div>
+            <div class="height-md"></div>
+            <button type="submit" class="btn btn-primary bg-primary">Submit</button>
+          </form>
         </div>
       </div>
       <div class="height-lg"></div>
