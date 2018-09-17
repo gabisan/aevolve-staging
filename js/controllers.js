@@ -6,11 +6,10 @@ angular
 navController.$inject = ['$scope','$window'];
 function navController($scope,$window) {
   if ($window.innerWidth > 991) {
-   $scope.isNavCollapsed = false;
+    $scope.isNavCollapsed = false;
   } else {
-      $scope.isNavCollapsed = true;
+    $scope.isNavCollapsed = true;
   }
-   console.log($scope.isNavCollapsed);
 };
 scrollRevealController.$inject = ['$scope', 'ScrollReveal', '$timeout' ];
 function scrollRevealController($scope, ScrollReveal, $timeout) {

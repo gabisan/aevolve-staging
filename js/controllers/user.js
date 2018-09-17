@@ -3,15 +3,15 @@ angular
 .module('app')
 .controller('kycCtrl', kycCtrl)
 
-kycCtrl.$inject = ['$scope', '$rootScope', '$http', '$window', '$state', '$uibModal', '$timeout', 'UserService', 'KycService', 'aevolve'];
+kycCtrl.$inject = ['$scope', '$rootScope', '$http', '$window', '$state', '$uibModal', '$timeout', '$q', '$exceptionHandler', 'UserService', 'KycService', 'aevolve'];
 
-function kycCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeout, UserService, KycService, aevolve) {
+function kycCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeout, $q, $exceptionHandler, UserService, KycService, aevolve) {
 
 	var vm = this;
 
 	$scope.img     = '';
 	$scope.format = 'yyyy-MM-dd';
-  $scope.date   = new Date();
+  	$scope.date   = new Date();
 
 	vm.user = JSON.parse(localStorage.getItem('user'));
 
@@ -22,16 +22,31 @@ function kycCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeout
 			city: vm.user.city,
 			postalcode: vm.user.postalcode,
 			country: vm.user.country.id,
-      birthdate: vm.user.birthdate
+      		birthdate: vm.user.birthdate
 		};
 
 		UserService.kyc(data, 'level1').then((response) => {
 
-			console.log(response);
+            swal(
+                'Success!',
+                'Successfully submitted identification, please wait for verification.',
+                'success'
+            );
+
+            $timeout( function() {
+                $state.go($state.current, {}, {reload: true});
+            }, 3000 );
 
 		}).catch((response) => {
 
-			console.log(response);
+            var mess = response.data.error;
+
+            swal(
+                'Error!',
+                '<p style="text-transform: capitalize;">' +mess+ '</p>',
+                'error'
+            );
+
 		});
 
 	};
@@ -44,10 +59,11 @@ function kycCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeout
 
 		KycService.countries().then((response) => {
 
-    	vm.countries = response.data.countrylist;
-    }).catch(function(res){
-    		throw res;
-    });
+			vm.countries = response.data.countrylist;
+
+		}).catch(function(res) {
+			throw res;
+		});
 	};
 
 	/**
@@ -56,13 +72,13 @@ function kycCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeout
 	 */
 	vm.getIdList = function() {
 
-    KycService.list().then((response) => {
+		KycService.list().then((response) => {
 
-      vm.idlist = response.data.idtypelist;
+		  vm.idlist = response.data.idtypelist;
 
-    }).catch(function(res){
-        throw res;
-    });
+		}).catch(function(res) {
+			throw res;
+		});
 	};
 
 	vm.levelTwo = function() {
@@ -76,7 +92,11 @@ function kycCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeout
 
 		UserService.kyc(data, 'level2').then((response) => {
 
-			console.log(response);
+            swal(
+                'Success!',
+                'Successfully submitted identification, please wait for verification.',
+                'success'
+            );
 
 		}).catch((response) => {
 
@@ -93,7 +113,11 @@ function kycCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeout
 
 		UserService.kyc(data, 'level3').then((response) => {
 
-			console.log(response);
+            swal(
+                'Success!',
+                'Successfully submitted identification, please wait for verification.',
+                'success'
+            );
 
 		}).catch((response) => {
 
@@ -101,34 +125,53 @@ function kycCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeout
 		});
 	};
 
-	vm.getImage = function() {
+	vm.getKyc1 = function() {
 
+		KycService.getKycLevel1().then((response) => {
 
-		// http://46.4.167.77:8080/user/kyc/image/bSNbpRmLLRQjqtV0g6IgscGpnGvsaTnQ0BjVJxrP5TP
+			$scope.kyc1 	= response.data;
 
-		$http.get( aevolve.url + '/user/kyc/image/iITh7olRKa5yyTYUf8rMNqFzuU7A2C5lv0LU338N2HM' )
-		.then((response)=> {
-				vm.img = response.data.image;
+            vm.user.address = $scope.kyc1.address;
+            vm.user.city    = $scope.kyc1.city;
+			vm.user.country = $scope.kyc1.country_id;
+            vm.user.postalcode = $scope.kyc1.postalcode;
+            vm.user.birthdate  = $scope.kyc1.birthdate;
 
-				// console.log($scope.img);
+		}).catch((response) => {
+
+            $scope.kyc1 = null;
 		});
-	}
+	};
 
-	// vm.getKycLevel1 = function() {
+    vm.getKyc2 = function() {
 
-	// 	var kyc  = [];
+        KycService.getKycLevel2().then((response) => {
 
-	// 	KycService.getKycLevel1().then((response) => {
+            $scope.kyc2 = response.data;
+            vm.user.idtype = $scope.kyc2.idtype;
 
- //    }).catch(function(res){
- //        throw res;
- //    });
+        }).catch((response) => {
 
-	// };
+            $scope.kyc2 = null;
+        });
+    };
 
-	vm.getImage();
+    vm.getKyc3 = function() {
+
+        KycService.getKycLevel3().then((response) => {
+
+            $scope.kyc3 = response.data;
+
+        }).catch((response) => {
+
+            $scope.kyc3 = null;
+        });
+    };
+
 	vm.getCountries();
-  vm.getIdList();
-  // vm.getKycLevel1();
-	
+  	vm.getIdList();
+
+  	vm.getKyc1();
+  	vm.getKyc2();
+  	vm.getKyc3();
 }

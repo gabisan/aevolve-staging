@@ -52,50 +52,50 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 				localStorage.setItem("token", response.data.token);
 
 				UserService.me().then((res) => {
-					angular.forEach(res, function(value, key) 
+					angular.forEach(res, function(value, key)
 					{
 						if (key === 'data')
 						{
-							console.log(value.user);
 							localStorage.setItem("user", JSON.stringify(value.user));
-							$state.go('wallet.main');
 						}
 					});
+
+                    $state.go('wallet.main');
 				});
 			}
 
-    }).catch((response) => {
-		/**
-		 * @desc unverified email
-		 */
-		if (response.status === 412)
-		{
+		}).catch((response) => {
+			/**
+			 * @desc unverified email
+			 */
+			if (response.status === 412)
+			{
 
-			$scope.unverifiedEmail = true;
+				$scope.unverifiedEmail = true;
 
-			swal(
-				'Oops...',
-				'Error please verify your email.',
-				'info'
-			);
-			
-		}
-		else {
-			$scope.errorLogin = true;
+				swal(
+					'Oops...',
+					'Error please verify your email.',
+					'info'
+				);
 
-			swal(
-				'Oops...',
-				'Wrong Email Address or Password.',
-				'error'
-			);
+			}
+			else {
+				$scope.errorLogin = true;
 
-		}
-	});
-  };
+				swal(
+					'Oops...',
+					'Wrong Email Address or Password.',
+					'error'
+				);
 
-  vm.register = function () {
-  	
-  	if (typeof vm.agree == 'undefined' || !vm.agree) {
+			}
+		});
+	};
+
+	vm.register = function () {
+
+		if (typeof vm.agree == 'undefined' || !vm.agree) {
 
 			swal(
 				'Oops...',
@@ -104,9 +104,9 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 			);
 
 			return false;
-  	}
+		}
 
-  	var data = {
+		var data = {
 			firstname : (vm.firstname) ? vm.firstname : null,
 			lastname : (vm.lastname) ? vm.lastname : null,
 			email : (vm.email) ? vm.email : null,
@@ -115,25 +115,24 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 		};
 
 		AuthService.register(data).then((response) => {
-  		
-				swal(
-            'Success!',
-            'Please check your email for verification.',
-            'success'
-        );
+			swal(
+				'Success!',
+				'Please check your email for verification.',
+				'success'
+			);
 
-  			$state.go('app.login');
-			
-    }).catch((response) => {
+			$state.go('app.login');
 
-    	var mess = response.data.error;
-    	swal(
-            'Error!',
-            '<p style="text-transform: capitalize;">' +mess+ '</p>',
-            'error'
-        );
-    });
-  };
+		}).catch((response) => {
+
+			var mess = response.data.error;
+			swal(
+				'Error!',
+				'<p style="text-transform: capitalize;">' +mess+ '</p>',
+				'error'
+			);
+		});
+	};
 
 }
 

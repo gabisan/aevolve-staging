@@ -22,6 +22,10 @@ hr {
 
 }
 
+datepicker {
+  font-family: 'CamptonBook', sans-serif !important;
+}
+
 hr.light {
   border-color: #fff;
 }

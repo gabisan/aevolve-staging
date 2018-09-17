@@ -8,46 +8,124 @@
       <div class="card">
         <div class="card-header card-dash-header">
           Level 1 User details
+
+          <!--<pre>{{ kyc1 }}</pre>-->
+
+          <!--<pre>{{ kyc2 }}</pre>-->
+
+          <!--<pre>{{ kyc3 }}</pre>-->
         </div>
         <div class="card-body">
-          <form class="form-signin" name="vm.form" ng-submit="kyc.levelOne()" role="form">
+          <form class="form-signin" name="vm.form" ng-submit="kyc.levelOne()" role="form" >
             Name
             <div class="form-group">
-              <input class="form-control" id="firstName" name="firstName" type="text" placeholder="First Name" ng-model="kyc.user.firstName" required />
+
+              <input class="form-control" name="firstName" type="text" placeholder="First Name" ng-model="kyc.user.firstName" required
+                     ng-if="kyc1.status_id == 1"
+                     disabled
+              />
+
+              <input class="form-control" name="firstName" type="text" placeholder="First Name" ng-model="kyc.user.firstName" required
+                     ng-if="kyc1.status_id != 1"
+              />
             </div>
             <div class="form-group">
-              <input class="form-control" id="lastName" name="lastName" type="text" placeholder="Last Name" ng-model="kyc.user.lastName" required />
+
+              <input class="form-control" name="lastName" type="text" placeholder="Last Name" ng-model="kyc.user.lastName" required
+                     ng-if="kyc1.status_id == 1"
+                     disabled
+              />
+
+              <input class="form-control" name="lastName" type="text" placeholder="Last Name" ng-model="kyc.user.lastName" required
+                     ng-if="kyc1.status_id != 1"
+              />
             </div>
             <div class="height-md"></div>
             Address
             <div class="form-group">
-              <input class="form-control" id="address" name="address" type="text" placeholder="House No." ng-model="kyc.user.address" required />
+              <input class="form-control" id="address" name="address" type="text" placeholder="House No." ng-model="kyc.user.address"
+                     required
+                     ng-if="kyc1.status_id == 1"
+                     disabled
+              />
+
+              <input class="form-control" id="address" name="address" type="text" placeholder="House No." ng-model="kyc.user.address"
+                     required
+                     ng-if="kyc1.status_id != 1"
+              />
             </div>
             <div class="form-group">
-              <input class="form-control" id="city" name="city" type="text" placeholder="City State" ng-model="kyc.user.city" required />
+              <input class="form-control" id="city" name="city" type="text" placeholder="City State" ng-model="kyc.user.city"
+                     required
+                     ng-if="kyc1.status_id == 1"
+                     disabled
+              />
+
+              <input class="form-control" id="city" name="city" type="text" placeholder="City State" ng-model="kyc.user.city"
+                     required
+                     ng-if="kyc1.status_id != 1"
+              />
             </div>
             <div class="form-group">
-              <select class="custom-select" 
-                id="country" 
-                name="country" 
-                ng-init="kyc.user.country"
-                ng-model="kyc.user.country"
-                ng-options="option.name for option in kyc.countries track by option.id"
+
+              <!--<select class="custom-select"-->
+                <!--name="country"-->
+                      <!--ng-model="kyc.user.country"-->
+                  <!--ng-options="option.name for option in kyc.countries track by option.id"-->
+                <!--&gt;-->
+              <!--</select>-->
+
+              <select class="custom-select" name="country" ng-model="kyc.user.country"
+                      ng-if="kyc1.status_id == 1"
+                      disabled
                 >
+                <option value="">--Select Country--</option>
+                <option ng-repeat="option in kyc.countries" value="{{option.id}}">{{option.name}}</option>
               </select>
+
+              <select class="custom-select" name="country" ng-model="kyc.user.country"
+                      ng-if="kyc1.status_id != 1"
+
+              >
+                <option value="">--Select Country--</option>
+                <option ng-repeat="option in kyc.countries" value="{{option.id}}">{{option.name}}</option>
+              </select>
+
             </div>
             <div class="form-group">
-              <input class="form-control" id="postalcode" name="postalcode" type="text" placeholder="Zip Code" ng-model="kyc.user.postalcode" required />
+              <input class="form-control" id="postalcode" name="postalcode" type="text" placeholder="Zip Code" ng-model="kyc.user.postalcode" required
+                     ng-if="kyc1.status_id == 1"
+                     disabled
+              />
+
+              <input class="form-control" id="postalcode" name="postalcode" type="text" placeholder="Zip Code" ng-model="kyc.user.postalcode" required
+                     ng-if="kyc1.status_id != 1"
+              />
             </div>
             Birthdate
             <div class="form-group">
               <div class="input-group">
-                <datepicker date-format="yyyy-MM-dd" selector="form-control" >
-                  <input class="form-control" ng-model="kyc.user.birthdate" type="text" placeholder="Date of Birth" width="50%"/>
+                <datepicker date-format="yyyy-MM-dd" selector="form-control " >
+
+                  <input class="form-control" ng-model="kyc.user.birthdate" type="text" placeholder="Date of Birth" width="50%"
+                         ng-if="kyc1.status_id == 1"
+                         disabled
+                  />
+
+                  <input class="form-control" ng-model="kyc.user.birthdate" type="text" placeholder="Date of Birth" width="50%"
+                         ng-if="kyc1.status_id != 1"
+                  />
                 </datepicker>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary bg-primary">Submit</button>
+            <button type="submit" class="btn btn-primary bg-primary"
+                    ng-if="kyc1.status_id == 1"
+                    disabled
+            >Submit</button>
+
+            <button type="submit" class="btn btn-primary bg-primary"
+                    ng-if="kyc1.status_id != 1"
+            >Submit</button>
           </form>
         </div>
       </div>
@@ -60,22 +138,50 @@
           <!-- <img src="data:image/jpeg;base64,{{ kyc.img }}" /> -->
           <form class="form-signin" name="vm.form" ng-submit="kyc.levelTwo()" role="form">
             <div class="form-group">
-              <select class="custom-select"
-                      id="idtype"
-                      name="idtype"
-                      ng-model="kyc.user.idtype"
-                      ng-options="option.name for option in kyc.idlist track by option.id">
-              </select>
-            </div>
-            <div class="form-group">
-              <input class="form-control" id="name" type="text" ng-model="kyc.user.idno" placeholder="ID Number" required="required">
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlFile1">Upload Photo of ID</label>
+              <!--<select class="custom-select"-->
+                      <!--id="idtype"-->
+                      <!--name="idtype"-->
+                      <!--ng-model="kyc.user.idtype"-->
+                      <!--ng-options="option.name for option in kyc.idlist track by option.id"-->
 
-              <input class="form-control" type="file" ng-model="file" name="file" base-sixty-four-input />
+              <!--&gt;-->
+              <!--</select>-->
+
+              <select class="custom-select" name="country" ng-model="kyc.user.idtype"
+                      ng-if="kyc2.status_id == 1"
+                      disabled
+              >
+                <option value="">--Select ID Type--</option>
+                <option ng-repeat="option in kyc.idlist" value="{{option.id}}">{{option.name}}</option>
+              </select>
+
+              <select class="custom-select" name="country" ng-model="kyc.user.idtype"
+                      ng-if="kyc2.status_id != 1"
+              >
+                <option value="">--Select ID Type--</option>
+                <option ng-repeat="option in kyc.idlist" value="{{option.id}}">{{option.name}}</option>
+              </select>
+
             </div>
-            <button type="submit" class="btn btn-primary bg-primary">Submit</button>
+
+            <div ng-if="kyc2.status_id != 1">
+              <div class="form-group">
+                <input class="form-control" id="name" type="text" ng-model="kyc.user.idno" placeholder="ID Number" required="required">
+              </div>
+              <div class="form-group">
+                <label >Upload Photo of ID</label>
+
+                <input class="form-control" type="file" ng-model="file" name="file" base-sixty-four-input />
+              </div>
+
+              <button type="submit" class="btn btn-primary bg-primary" >Submit</button>
+            </div>
+
+            <div ng-if="kyc2.status_id == 1">
+              <div class="form-group text-center">
+                <i class="fas fa-hourglass-half text-warning"></i> Identification under review.
+              </div>
+            </div>
           </form>
         </div>
       </div>
@@ -85,127 +191,42 @@
           Level 3 Document + Photo
         </div>
         <div class="card-body">
-          <p>We request you to take a clear selfie holding up a valid ID and the properly filled-up KYC form that you downloaded.
-          </p>
-          <div class="height-md"></div>
-          <form class="form-signin" name="vm.form" ng-submit="kyc.levelThree()" role="form">
-            <a href="doc/kyc-form-english.pdf" class="btn btn-primary" download><i class="far fa-file-pdf"></i>
-              Download KYC Form</a>
-            <div class="height-lg"></div>
-            <div class="divider"></div>
-            <div class="height-lg"></div>
-            <div class="form-group">
-              <label for="exampleFormControlFile1">1. Upload scanned filled up document</label>
-              <input class="form-control" type="file" ng-model="document" name="document" base-sixty-four-input />
-            </div>
-            <div class="height-lg"></div>
-            <div class="divider"></div>
+          <div ng-if="kyc3.status_id != 1">
+            <p>We request you to take a clear selfie holding up a valid ID and the properly filled-up KYC form that you downloaded.
+            </p>
             <div class="height-md"></div>
-            <div class="form-group">
-              <label for="exampleFormControlFile1">2. Upload Photo</label>
-              <div class="height-md"></div>
-              <img src="img/img-submit-photo.jpg" />
+            <form class="form-signin" name="vm.form" ng-submit="kyc.levelThree()" role="form">
+              <a href="doc/kyc-form-english.pdf" class="btn btn-primary" download><i class="far fa-file-pdf"></i>
+                Download KYC Form</a>
               <div class="height-lg"></div>
-              <input class="form-control" type="file" ng-model="selfie" name="selfie" base-sixty-four-input />
-            </div>
-            <div class="height-md"></div>
-            <button type="submit" class="btn btn-primary bg-primary">Submit</button>
-          </form>
-        </div>
-      </div>
-      <div class="height-lg"></div>
-      <div class="card">
-        <div class="card-header card-dash-header">
-          Level 1 User details
-        </div>
-        <div class="card-body">
-          Name
-          <div class="form-group">
-            <input class="form-control" id="name" type="text" value="John" required="required" disabled>
+              <div class="divider"></div>
+              <div class="height-lg"></div>
+              <div class="form-group">
+                <label >1. Upload scanned filled up document</label>
+                <input class="form-control" type="file" ng-model="document" name="document" base-sixty-four-input />
+              </div>
+              <div class="height-lg"></div>
+              <div class="divider"></div>
+              <div class="height-md"></div>
+              <div class="form-group">
+                <label >2. Upload Photo</label>
+                <div class="height-md"></div>
+                <img src="img/img-submit-photo.jpg" />
+                <div class="height-lg"></div>
+                <input class="form-control" type="file" ng-model="selfie" name="selfie" base-sixty-four-input />
+              </div>
+              <div class="height-md"></div>
+              <button type="submit" class="btn btn-primary bg-primary">Submit</button>
+            </form>
           </div>
-          <div class="form-group">
-            <input class="form-control" id="name" type="text" value="Cena" required="required" disabled>
-          </div>
-          <div class="height-md"></div>
-          Address
-          <div class="form-group">
-            <input class="form-control" id="name" type="text" value="77 Street Block" required="required" disabled>
-          </div>
-          <div class="form-group">
-            <input class="form-control" id="name" type="text" value="City State" disabled>
-          </div>
-          <div class="form-group">
-            <select class="custom-select" id="inputGroupSelect03" disabled>
-              <option selected>Zanzibar</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <input class="form-control" id="name" type="text" value="10101" required="required" disabled>
-          </div>
-          Birthdate
-          <div class="form-group">
-            <div class="input-group">
-              <select class="custom-select" id="inputGroupSelect03" disabled>
-                <option selected>February</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-              <select class="custom-select" id="inputGroupSelect03" disabled>
-                <option selected>29</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-              <select class="custom-select" id="inputGroupSelect03" disabled>
-                <option selected>1985</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
+          <div ng-if="kyc3.status_id == 1">
+            <div class="form-group text-center">
+              <i class="fas fa-hourglass-half text-warning"></i> Document + Photo under review.
             </div>
           </div>
-          <a href="#" class="btn btn-primary bg-primary">Edit</a>
         </div>
       </div>
       <div class="height-lg"></div>
-      <div class="card">
-        <div class="card-header card-dash-header">
-          Level 2 Identification
-        </div>
-        <div class="card-body">
-          <div class="form-group">
-            <select class="custom-select disabled" id="inputGroupSelect03" disabled>
-              <option selected>Drivers License</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <input class="form-control " id="name" type="text" placeholder="ID Number" required="required" value="G1234567" disabled>
-          </div>
-          <div class="form-group">
-            <img src="..." class="img-fluid" style="min-height:300px; min-width:100%; background:#ebebeb;">
-          </div>
-          <a href="#" class="btn btn-primary bg-primary">Edit</a>
-        </div>
-      </div>
-      <div class="height-lg"></div>
-      <div class="card">
-        <div class="card-header card-dash-header">
-          Level 3 Photo + Keyword
-        </div>
-        <div class="card-body">
-          <div class="form-group">
-            <img src="..." class="img-fluid" style="min-height:300px; min-width:100%; background:#ebebeb;">
-          </div>
-          <a href="#" class="btn btn-primary bg-primary">Edit</a>
-        </div>
-      </div>
     </div>
   </div>
 </div>
