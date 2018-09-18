@@ -1,6 +1,6 @@
 angular
 .module('app')
-.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$breadcrumbProvider', function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $breadcrumbProvider) {
+.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$breadcrumbProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $breadcrumbProvider, $locationProvider) {
 
   $urlRouterProvider.otherwise('/');
 // http://localhost/aevolve/#!/wallet/settings
@@ -14,6 +14,9 @@ angular
   //   includeAbstract: true,
   //   template: '<li class="breadcrumb-item" ng-repeat="step in steps" ng-class="{active: $last}" ng-switch="$last || !!step.abstract"><a ng-switch-when="false" href="{{step.ncyBreadcrumbLink}}">{{step.ncyBreadcrumbLabel}}</a><span ng-switch-when="true">{{step.ncyBreadcrumbLabel}}</span></li>'
   // });
+
+    $locationProvider.html5Mode(true);
+
   $stateProvider
   .state('app', {
     abstract: true,
@@ -162,5 +165,4 @@ angular
     url: '/500',
     templateUrl: 'views/pages/500.html'
   })
-
 }]);
