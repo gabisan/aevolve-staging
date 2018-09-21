@@ -5,8 +5,8 @@ angular
 .controller('getTokenModalCtrl', getTokenModalCtrl)
 .controller('joinWhitelistModalCtrl', joinWhitelistModalCtrl)
 
-gettokenCtrl.$inject = ['$scope','$uibModal'];
-function gettokenCtrl($scope,$uibModal) {
+gettokenCtrl.$inject = ['$scope','$uibModal', 'UserService'];
+function gettokenCtrl($scope,$uibModal, UserService) {
 
   // Open card modal
   $scope.openGetTokenModal = function() {
@@ -31,28 +31,31 @@ function gettokenCtrl($scope,$uibModal) {
    
   };
 
-  $scope.openJoinWhitelistModal = function() {
+  $scope.openJoinWhiteList = function () {
 
-    var modalInstance = $uibModal.open({
-      // animation: false,
-      // backdrop: 'static',
-      templateUrl: 'views/common/modals/join-whitelist-modal.html',
-      controller: 'getTokenModalCtrl',
-      windowClass: 'custom-modal',
+      UserService.whitelist()
+          .then((response)=> {
 
-      // size: '100px',
-      resolve: {}
-    });
+            if (response)
+            {
+                swal(
+                    'Success!',
+                    'Successfully whitelisted.',
+                    'success'
+                );
+            }
 
-    modalInstance.result
-    .then(function() {})
-    .catch(function(res) {
-     if (!(res === 'cancel' || res === 'escape key press' || res === 'backdrop click')) {
-        throw res;
-      }
-    });
-  
-  };
+          })
+          .catch((response)=> {
+          var mess = response.data.error;
+          swal(
+              'Error!',
+              '<p style="text-transform: capitalize;">' +mess+ '</p>',
+              'error'
+          );
+      });
+
+  }
 }
 
 getTokenModalCtrl.$inject = ['$scope','$uibModalInstance'];

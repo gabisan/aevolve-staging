@@ -16,6 +16,10 @@
         service.kyc = function(data, level) {
           return $http.post( aevolve.url + '/user/kyc/' + level, data );
         };
+
+        service.whitelist = function () {
+            return $http.post( aevolve.url + '/user/whitelist' );
+        };
        
       	return service;
       }
