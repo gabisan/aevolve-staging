@@ -22,8 +22,8 @@
         };
 
         service.logout = function() {
-          $window.localStorage.clear();
-        }
+            return $http.get( aevolve.url + '/logout');
+        };
 
       	return service;
       }

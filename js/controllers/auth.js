@@ -134,6 +134,20 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 		});
 	};
 
+	vm.logout = function () {
+        AuthService.logout().then(() => {
+
+            $window.localStorage.clear();
+
+            swal(
+                'Logout',
+                'Successfully Logged out',
+                'info'
+            );
+
+            $state.go('app.login');
+        });
+    }
 }
 
 authModalCtrl.$inject = ['$scope', '$uibModalInstance'];
