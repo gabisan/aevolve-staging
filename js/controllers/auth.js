@@ -50,7 +50,8 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 			if (response.data.token)
 			{
 				localStorage.setItem("token", response.data.token);
-
+				localStorage.setItem("expiry", response.data.expiredt);
+				
 				UserService.me().then((res) => {
 					angular.forEach(res, function(value, key)
 					{

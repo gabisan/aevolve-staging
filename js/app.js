@@ -95,7 +95,8 @@ angular
   $transitions.onSuccess({} ,function(){
 
     var currentUser = JSON.parse(localStorage.getItem('user'));
-    
+    var expireTime = new Date (localStorage.getItem('expiry'));
+		
     if ($state.current.name === 'app.main') {
     
       $rootScope.mainNav = true;
@@ -103,7 +104,13 @@ angular
 
       $rootScope.mainNav = false;
     }
-
+		
+		
+    if (expireTime.getTime() < Date.now()) {
+      localStorage.clear();
+      currentUser = null;
+    }
+		
     if (currentUser) {
 
         $rootScope.authenticated = true;
