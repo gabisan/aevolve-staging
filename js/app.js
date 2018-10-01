@@ -24,9 +24,10 @@ angular
   'ngAnimate',
   'duScroll',
   'ngScrollReveal',
-  'naif.base64'
+  'naif.base64',
+	'ngIdle'
 ])
-.config(['cfpLoadingBarProvider', '$httpProvider', function(cfpLoadingBarProvider, $httpProvider) {
+.config(['cfpLoadingBarProvider', '$httpProvider', 'IdleProvider', 'KeepaliveProvider', function(cfpLoadingBarProvider, $httpProvider, IdleProvider, KeepaliveProvider) {
 
   cfpLoadingBarProvider.includeSpinner = false;
   cfpLoadingBarProvider.latencyThreshold = 1;
@@ -82,10 +83,19 @@ angular
   //   }
   //   return result.join("&");
   // });
+	
+	// configure Idle settings
+  IdleProvider.idle(300);
+  IdleProvider.timeout(60);
+  KeepaliveProvider.interval(150);
+		
+	IdleProvider.interrupt('keydown wheel mousedown touchstart touchmove scroll');
+	
 
 }])
-.run(['$rootScope', '$state', '$stateParams', '$transitions', '$location', function($rootScope, $state, $stateParams, $transitions, $location) {
-  // $transitions.onSuccess({} ,function(){
+.run(['$rootScope', '$state', '$stateParams', '$transitions', '$location', 'Idle', '$uibModal', 'AuthService', function($rootScope, $state, $stateParams, $transitions, $location, Idle, $uibModal, AuthService) {
+  var expireModal = null;
+	// $transitions.onSuccess({} ,function(){
   //       $rootScope.$stateNow = $state.current.name ;
   // });
   $rootScope.$on('$stateChangeSuccess',function(){
@@ -97,6 +107,11 @@ angular
     var currentUser = JSON.parse(localStorage.getItem('user'));
     var expireTime = new Date (localStorage.getItem('expiry'));
 		
+    if ($state.includes('wallet') && !Idle.running()) {
+      console.log('setting idle watch...');
+      Idle.watch();
+    }  
+    
     if ($state.current.name === 'app.main') {
     
       $rootScope.mainNav = true;
@@ -129,7 +144,65 @@ angular
     }
 
   });
+	
+  $rootScope.expireDialog = function () {
+    if (!expireModal) {
+		  expireModal = $uibModal.open({
+        templateUrl: 'views/common/modals/keep-login-modal.html',
+        controller: 'ModalInstanceCtrl',
+        backdrop: true
+      });
 
+      //Because finally is a reserved word in JavaScript and reserved keywords are not supported as property names by ES3,
+      //you'll need to invoke the method like promise['finally'](callback) to make your code IE8 compatible.
+      expireModal.result['finally']( function () {
+        expireModal = null;
+			});
+		}
+		return expireModal;
+	} 
+	
+  $rootScope.$on('IdleStart', function() {
+    // check (last action in local storage + allowed idle length)  greater than now = not yet idle
+    console.log ('user is idle');
+    $rootScope.expireDialog();
+    
+    
+  });
+  
+  $rootScope.$on('IdleTimeout', function() {
+		// the user has timed out (meaning idleDuration + timeout has passed without any activity)
+
+    console.log ('user has timedout');
+    
+    if (expireModal) expireModal.close();
+    
+    AuthService.logout().then(() => {
+
+            localStorage.clear();
+
+            swal(
+                'Logged Out',
+                'You have been logged due to inactivity',
+                'info'
+            );
+
+            $state.go('app.login');
+        });
+	});
+  
+  $rootScope.$on('IdleEnd', function() {
+  // the user has come back from AFK and is doing stuff update keepalive
+    console.log ('user has returned');
+  })
+  
+  $rootScope.$on('Keepalive', function() {
+    //set local storage last action to let other open tabs know
+    console.log ('keep alive');
+    //add check for token expiry to request new jwt token if expired
+  });
+	
+	
   $rootScope.$state = $state;
   return $rootScope.$stateParams = $stateParams;
 
