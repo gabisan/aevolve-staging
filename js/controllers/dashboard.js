@@ -12,12 +12,9 @@ function dashboardCtrl($scope,$uibModal) {
   $scope.openCardModal = function() {
 
     var modalInstance = $uibModal.open({
-      // animation: false,
-      // backdrop: 'static',
       templateUrl: 'views/common/modals/send-token-modal.html',
       controller: 'ModalInstanceCtrl',
       windowClass: 'custom-modal',
-      // size: '100px',
       resolve: {}
     });
 
@@ -37,13 +34,9 @@ function dashboardCtrl($scope,$uibModal) {
   $scope.openJoinWhitelistModal = function() {
 
     var mdInstance = $uibModal.open({
-      // animation: false,
-      // backdrop: 'static',
       templateUrl: 'views/common/modals/join-whitelist-modal.html',
       controller: 'ModalInstanceCtrl',
       windowClass: 'custom-modal',
-
-      // size: '100px',
       resolve: {}
     });
 

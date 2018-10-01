@@ -8,30 +8,20 @@
         <div class="height-sm"></div>
         Join the Aevolve Token Whitelist
         <div class="height-lg"></div>
-        <form class="form-signin" id="whitelist-form" data-parsley-validate="" novalidate="">
-        <div class="form-group">
-          <input class="form-control" id="name" type="text" placeholder="First Name" required="required" data-parsley-trigger="change" data-parsley-minlength="2">
-        </div>
-        <div class="form-group">
-          <input class="form-control" id="name" type="text" placeholder="Last Name" required="required" data-parsley-trigger="change" data-parsley-minlength="2">
-        </div>
-        <div class="form-group">
-            <input type="email" class="form-control" placeholder="Email" name="email" data-parsley-trigger="change" required="">
-        </div>
-        <div class="form-group">
-            <input type="tel" class="form-control" placeholder="Phone" name="phone" data-parsley-type="number" data-parsley-trigger="change" required="">
-        </div>
-        <div class="form-group">
-            <select class="custom-select" id="inputGroupSelect03">
-              <option selected="">Country</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
+        <form class="form-signin" id="whitelist-form" data-parsley-validate=""  novalidate="">
+          <div class="form-group">
+            <input class="form-control" id="firstname" ng-model="vm.firstname" type="text" placeholder="First Name" required="required" data-parsley-trigger="change" data-parsley-minlength="2">
           </div>
-        <div class="height-md"></div>
-        <button type="button" class="btn btn-lg bg-primary text-white" data-dismiss="modal" data-toggle="modal" data-target="#status-modal"><i class="fas fa-arrow-circle-right"></i> Join The Medical Revolution </button>
-        <div class="height-md"></div>
+          <div class="form-group">
+            <input class="form-control" id="lastname" ng-model="vm.lastname" type="text" placeholder="Last Name" required="required" data-parsley-trigger="change" data-parsley-minlength="2">
+          </div>
+          <div class="form-group">
+              <input type="email" class="form-control" ng-model="vm.email" placeholder="Email" name="email" data-parsley-trigger="change" required="">
+          </div>
+
+          <div class="height-md"></div>
+          <button type="button" ng-click="register()" class="btn btn-lg bg-primary text-white" ><i class="fas fa-arrow-circle-right"></i> Join The Medical Revolution </button>
+          <div class="height-md"></div>
         </form>
       </div>
     <!-- </div>

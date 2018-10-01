@@ -25,6 +25,10 @@
             return $http.get( aevolve.url + '/logout');
         };
 
+        service.whitelist = function (data) {
+            return $http.post( aevolve.url + '/subscribe', data);
+        };
+
       	return service;
       }
   })();
