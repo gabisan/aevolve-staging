@@ -1,7 +1,7 @@
 <section class="bg-gray">
   <div class="container my-auto">
     <div class="row justify-content-sm-center">
-      <div class="col-xs-10 col-sm-8 col-md-7 col-lg-5 col-xl-4">
+      <div class="col-xs-10 col-sm-10 col-md-8 col-lg-6 col-xl-5">
 
           <div ng-show="successSignup" class="alert alert-success text-center" role="alert">
             Sign success!
@@ -33,10 +33,11 @@
 
         <div class="height-md"></div>
         <div class="account-box">
-          <h2>Login</h2>
-          <div class="height-md"></div>
-          <span>No account?
-          <a ui-sref="app.register">Create an account</a></span><br />
+          <h2>Account Login</h2>
+          For registered users
+          <div class="height-lg"></div>
+          <span>Don't have an account? Create one
+              <a ui-sref="app.register">here</a>.</span><br>
           <div class="height-sm"></div>
           <form class="form-signin" name="vm.form" ng-submit="auth.login()" role="form">
             <div class="form-group">
@@ -52,7 +53,7 @@
               <button type="submit" class="btn btn-lg btn-block bg-primary text-light">Login</button>
           </form>
           <div class="height-md"></div>
-
+          <a href="forgot-password.html">Forgot Password?</a>
         </div>
       </div>
     </div>

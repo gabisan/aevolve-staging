@@ -13,13 +13,9 @@ function settingsCtrl($scope,$uibModal) {
   $scope.openAuthentication = function() {
 
     var modalInstance = $uibModal.open({
-      // animation: false,
-      // backdrop: 'static',
       templateUrl: 'views/common/modals/2fa-code-modal.html',
       controller: 'ModalAuthenticatorCtrl',
       windowClass: 'custom-modal',
-
-      // size: '100px',
       resolve: {}
     });
 
@@ -38,13 +34,9 @@ function settingsCtrl($scope,$uibModal) {
   $scope.openAuthentication2 = function() {
 
     var modalInstance = $uibModal.open({
-      // animation: false,
-      // backdrop: 'static',
       templateUrl: 'views/common/modals/authenticator-app-modal.html',
       controller: 'ModalAuthenticatorCtrl2',
       windowClass: 'custom-modal',
-
-      // size: '100px',
       resolve: {
       }
     });

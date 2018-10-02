@@ -15,8 +15,6 @@ angular
   //   template: '<li class="breadcrumb-item" ng-repeat="step in steps" ng-class="{active: $last}" ng-switch="$last || !!step.abstract"><a ng-switch-when="false" href="{{step.ncyBreadcrumbLink}}">{{step.ncyBreadcrumbLabel}}</a><span ng-switch-when="true">{{step.ncyBreadcrumbLabel}}</span></li>'
   // });
 
-    $locationProvider.html5Mode(true);
-
   $stateProvider
   .state('app', {
     abstract: true,
@@ -71,6 +69,13 @@ angular
     url: '/verify/{code}',
     template: ' ',
     controller: 'authCtrl',
+  })
+
+  .state('app.forgotpassword', {
+      url: '/forgot-password',
+      templateUrl: 'views/pages/forgot-password.html',
+      controller: 'authCtrl',
+      controllerAs: 'auth'
   })
 
   .state('app.components.gettokens', {
@@ -165,4 +170,10 @@ angular
     url: '/500',
     templateUrl: 'views/pages/500.html'
   })
+
+
+    // $locationProvider.html5Mode({
+    //     enabled: true,
+    //     requireBase: false
+    // });
 }]);

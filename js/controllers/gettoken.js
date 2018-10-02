@@ -12,12 +12,9 @@ function gettokenCtrl($scope,$uibModal, UserService) {
   $scope.openGetTokenModal = function() {
 
     var modalInstance = $uibModal.open({
-      // animation: false,
-      // backdrop: 'static',
       templateUrl: 'views/common/modals/get-token-modal.html',
       controller: 'getTokenModalCtrl',
       windowClass: 'custom-modal',
-      // size: '100px',
       resolve: {}
     });
 
@@ -54,7 +51,6 @@ function gettokenCtrl($scope,$uibModal, UserService) {
               'error'
           );
       });
-
   }
 }
 
