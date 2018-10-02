@@ -24,8 +24,11 @@
         <li class="nav-item">
           <a class="nav-link" href="#contact" du-smooth-scroll du-scrollspy>Contact</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" ng-if="authenticated != true">
           <a class="nav-link js-scroll-trigger btn-buy" ui-sref-active="active" ui-sref="app.register">Join ICO</a>
+        </li>
+        <li class="nav-item" ng-if="authenticated == true">
+          <a class="nav-link js-scroll-trigger btn-buy" ui-sref-active="active" ui-sref="wallet.main">My Account</a>
         </li>
       </ul>
       <ul ng-if = "mainNav != true" class="navbar-nav ml-auto">
@@ -41,8 +44,11 @@
         <li class="nav-item">
           <a class="nav-link" href="#" ui-sref-active="active" ui-sref="app.main({'#': 'contact'})">Contact</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" ng-if="authenticated != true">
           <a class="nav-link js-scroll-trigger btn-buy" ui-sref-active="active" ui-sref="app.register">Join ICO</a>
+        </li>
+        <li class="nav-item" ng-if="authenticated == true">
+          <a class="nav-link js-scroll-trigger btn-buy" ui-sref-active="active" ui-sref="wallet.main">My Account</a>
         </li>
       </ul>
     </div>
