@@ -15,6 +15,8 @@ scrollRevealController.$inject = ['$scope', 'ScrollReveal', '$timeout', '$uibMod
 function scrollRevealController($scope, ScrollReveal, $timeout, $uibModal, $state, AuthService) {
     var vm = this;
 
+    $scope.currentTabIndex = 0;
+
     $scope.optionsgoUp = {
         origin: 'bottom',
         distance : '200px',

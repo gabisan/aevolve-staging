@@ -771,6 +771,12 @@ header.masthead p {
   filter: alpha(opacity=70);
 }
 
+.nav-tabs .nav-item.active > a {
+  color: #495057;
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+
 @media (min-width: 768px) {
   .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
     font-size: 16px;
