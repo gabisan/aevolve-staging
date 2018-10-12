@@ -61,15 +61,32 @@
             <!--</div>-->
 
             <div class="card ">
-              <div class="lb-content">
-                <img src="img/token-icon.png" style="height:30px;">
-                <div class="height-md"></div>
-                To evaluate your qualification to join the Pre-ICO please join our whitelist.
-                <div class="height-lg"></div>
-                <a href="#" class="btn btn-primary bg-primary" ng-click="openJoinWhiteList()"><i class="fas fa-arrow-circle-right"></i>
-                  Join Whitelist</a>
+
+              <div ng-if="whitelist == 'PENDING'">
+                <div class="lb-content">
+                  <div class="height-md"></div>
+                  <img src="img/token-icon.png" style="height:30px;">
+                  <div class="height-md"></div>
+                  Your whitelist request is currently undergoing review.
+                  <div class="height-md"></div>
+                </div>
+
+                <div class="lb-bg"></div>
               </div>
-              <div class="lb-bg"></div>
+
+              <div ng-if="whitelist == ''">
+                <div class="lb-content">
+                  <img src="img/token-icon.png" style="height:30px;">
+                  <div class="height-md"></div>
+                  To evaluate your qualification to join the Pre-ICO please join our whitelist.
+                  <div class="height-lg"></div>
+                  <a href="#" class="btn btn-primary bg-primary" ng-click="openJoinWhiteList()"><i class="fas fa-arrow-circle-right"></i>
+                    Join Whitelist</a>
+                </div>
+
+                <div class="lb-bg"></div>
+              </div>
+
               <div class="card-header card-dash-header">
                 <i class="fas fa-arrow-circle-right"></i> Select currency to convert to AEVX
               </div>

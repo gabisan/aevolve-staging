@@ -14,6 +14,8 @@ angular
 .directive('compareEmailTo', compareEmailTo)
 .directive('changeClassOnScroll', changeClassOnScroll)
 .directive('file', file)
+.directive('loading', loading)
+
 //Prevent click if href="#"
 function preventClickDirective() {
   var directive = {
@@ -303,4 +305,33 @@ function file() {
             });
         }
     };
+}
+
+function loading() {
+    return {
+        restrict: 'E',
+        replace:true,
+        // template: '<div class="loader-overlay">' +
+        //     ' <div class="spinner">\n' +
+        //     '  <div class="bounce1"></div>\n' +
+        //     '  <div class="bounce2"></div>\n' +
+        //     '  <div class="bounce3"></div>\n' +
+        //     ' </div>' +
+        //     '</div>',
+        template: '<div id="preloader" style="display: block;">\n' +
+            '            <div id="loader" style="display: block;"></div>\n' +
+            '            <div class="loader-section loader-top"></div>\n' +
+            '            <div class="loader-section loader-bottom"></div>\n' +
+            '        </div>',
+        link: function (scope, element, attr) {
+
+            scope.$watch('loading', function (val) {
+
+                if (val)
+                    $(element).show();
+                else
+                    $(element).hide();
+            });
+        }
+    }
 }

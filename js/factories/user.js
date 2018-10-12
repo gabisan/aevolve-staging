@@ -17,6 +17,10 @@
           return $http.post( aevolve.url + '/user/kyc/' + level, data );
         };
 
+        service.statuswhitelist = function () {
+          return $http.get( aevolve.url + '/user/whitelist' );
+        };
+
         service.whitelist = function () {
             return $http.post( aevolve.url + '/user/whitelist' );
         };

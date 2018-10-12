@@ -3,9 +3,9 @@ angular
 .controller('authCtrl', authCtrl)
 .controller('authModalCtrl', authModalCtrl)
 
-authCtrl.$inject = ['$scope', '$rootScope', '$http', '$window', '$state', '$uibModal', '$timeout', 'AuthService', 'UserService', 'aevolve'];
+authCtrl.$inject = ['$scope', '$rootScope', '$http', '$window', '$state', '$uibModal', '$timeout', '$q', 'AuthService', 'UserService', 'aevolve'];
 
-function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeout, AuthService, UserService, aevolve) {
+function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeout, $q, AuthService, UserService, aevolve) {
 	var vm = this;
 
 	if ($state.params.code)
@@ -24,11 +24,11 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 
 			$state.go('app.login');
 			var mess = response.data.error;
-    	swal(
-            'Error!',
-            '<p style="text-transform: capitalize;">' +mess+ '</p>',
-            'error'
-        );
+			swal(
+				'Error!',
+				'<p style="text-transform: capitalize;">' +mess+ '</p>',
+				'error'
+			);
 		});
 	}
 
@@ -42,6 +42,7 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 			password :  (vm.password) ? vm.password : null
 		};
 
+        $scope.loading = true;
 		AuthService.login(data).then((response) => {
 
 			/**
@@ -53,6 +54,7 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 				localStorage.setItem("expiry", response.data.expiredt);
 				
 				UserService.me().then((res) => {
+                    //$scope.loading = false;
 					angular.forEach(res, function(value, key)
 					{
 						if (key === 'data')
@@ -65,33 +67,39 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 				});
 			}
 
+            $scope.loading = false;
+
 		}).catch((response) => {
-			/**
-			 * @desc unverified email
-			 */
-			if (response.status === 412)
-			{
+            /**
+             * @desc unverified email
+             */
+            if (response.status === 412)
+            {
 
-				$scope.unverifiedEmail = true;
+                $scope.unverifiedEmail = true;
 
-				swal(
-					'Oops...',
-					'Error please verify your email.',
-					'info'
-				);
+                swal(
+                    'Oops...',
+                    'Error please verify your email.',
+                    'info'
+                );
 
-			}
-			else {
-				$scope.errorLogin = true;
+            }
+            else {
+                $scope.errorLogin = true;
 
-				swal(
-					'Oops...',
-					'Wrong Email Address or Password.',
-					'error'
-				);
+                swal(
+                    'Oops...',
+                    'Wrong Email Address or Password.',
+                    'error'
+                );
 
-			}
-		});
+            }
+
+            $scope.loading = false;
+        });
+
+
 	};
 
 	vm.register = function () {
@@ -115,6 +123,7 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 			newletter : (vm.newletter) ? vm.newletter : null,
 		};
 
+        $scope.loading = true;
 		AuthService.register(data).then((response) => {
 			swal(
 				'Success!',
@@ -124,6 +133,8 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 
 			$state.go('app.login');
 
+            $scope.loading = false;
+
 		}).catch((response) => {
 
 			var mess = response.data.error;
@@ -132,6 +143,8 @@ function authCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeou
 				'<p style="text-transform: capitalize;">' +mess+ '</p>',
 				'error'
 			);
+
+            $scope.loading = false;
 		});
 	};
 

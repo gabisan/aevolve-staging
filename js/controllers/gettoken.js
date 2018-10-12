@@ -5,53 +5,93 @@ angular
 .controller('getTokenModalCtrl', getTokenModalCtrl)
 .controller('joinWhitelistModalCtrl', joinWhitelistModalCtrl)
 
-gettokenCtrl.$inject = ['$scope','$uibModal', 'UserService'];
-function gettokenCtrl($scope,$uibModal, UserService) {
+gettokenCtrl.$inject = ['$scope','$uibModal', 'UserService', 'KycService'];
+function gettokenCtrl($scope,$uibModal, UserService, KycService) {
+
+    var vm = this;
+
+    $scope.whitelist = '';
+    // swal(
+    //     'Test!',
+    //     'Test',
+    //     'success'
+    // );
 
   // Open card modal
-  $scope.openGetTokenModal = function() {
+    $scope.openGetTokenModal = function() {
 
-    var modalInstance = $uibModal.open({
-      templateUrl: 'views/common/modals/get-token-modal.html',
-      controller: 'getTokenModalCtrl',
-      windowClass: 'custom-modal',
-      resolve: {}
-    });
+        var modalInstance = $uibModal.open({
+          templateUrl: 'views/common/modals/get-token-modal.html',
+          controller: 'getTokenModalCtrl',
+          windowClass: 'custom-modal',
+          resolve: {}
+        });
 
-    modalInstance.result
-    .then(function() {})
-    .catch(function(res) {
-      if (!(res === 'cancel' || res === 'escape key press' || res === 'backdrop click')) {
-        throw res;
-      }
-    });
-   
-  };
+        modalInstance.result
+        .then(function() {})
+        .catch(function(res) {
+          if (!(res === 'cancel' || res === 'escape key press' || res === 'backdrop click')) {
+            throw res;
+          }
+        });
 
-  $scope.openJoinWhiteList = function () {
+    };
 
-      UserService.whitelist()
-          .then((response)=> {
+    $scope.openJoinWhiteList = function () {
 
+        UserService.whitelist()
+            .then((response)=> {
+
+                if (response)
+                {
+                    swal(
+                        'Success!',
+                        'Successfully whitelisted.',
+                        'success'
+                    );
+                }
+
+            })
+            .catch((response)=> {
+                var mess = response.data.error;
+                swal(
+                  'Error!',
+                  '<p style="text-transform: capitalize;">' +mess+ '</p>',
+                  'error'
+                );
+        });
+    }
+
+    /**
+     * WhiteList
+     */
+    vm.getWhiteList = function() {
+
+        UserService.statuswhitelist().then((response) => {
+
+            // console.log(response.data.status);
             if (response)
             {
-                swal(
-                    'Success!',
-                    'Successfully whitelisted.',
-                    'success'
-                );
+                $scope.whitelist = response.data.status;
             }
+        }).catch(function(res) {
 
-          })
-          .catch((response)=> {
-          var mess = response.data.error;
-          swal(
-              'Error!',
-              '<p style="text-transform: capitalize;">' +mess+ '</p>',
-              'error'
-          );
-      });
-  }
+            $scope.whitelist = false;
+            throw res;
+        });
+    };
+
+    // vm.checkKyc = function() {
+    //
+    //     KycService.getKyc().then((response) => {
+    //         console.log(response);
+    //     }).catch((response)=> {
+    //         throw res;
+    //     });
+    // }
+
+    vm.getWhiteList();
+    // vm.checkKyc();
 }
 
 getTokenModalCtrl.$inject = ['$scope','$uibModalInstance'];

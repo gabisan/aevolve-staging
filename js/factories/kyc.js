@@ -14,8 +14,8 @@
             var deferred = $q.defer();
 
             let kyc1   = $http.get( aevolve.url + '/user/kyc/level1/status' );
-            let kyc2   = $http.get( aevolve.url + '/user/kyc/level2' );
-            let kyc3   = $http.get( aevolve.url + '/user/kyc/level3' );
+            let kyc2   = $http.get( aevolve.url + '/user/kyc/level2/status' );
+            let kyc3   = $http.get( aevolve.url + '/user/kyc/level3/status' );
 
             // Array of Promises
             return $q.all([kyc1, kyc2, kyc3 ]);

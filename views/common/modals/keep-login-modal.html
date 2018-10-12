@@ -11,7 +11,7 @@
         <span idle-countdown="countdown"><i class="fas fa-circle-notch fa-spin"></i> {{countdown | secondsToDateTime | date:'mm:ss' }}</span>
         <div class="height-lg"></div>
         <button type="button" class="btn bg-primary text-white" data-dismiss="modal" data-toggle="modal"
-          data-target="#status-modal">Yes, I want to stay logged in.
+          data-target="#status-modal" ng-click="refreshPage()">Yes, I want to stay logged in.
         </button>
         <div class="height-md"></div>
       </div>

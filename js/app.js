@@ -35,9 +35,10 @@ angular
   $httpProvider.defaults.headers.post["Content-Type"] = "application/json";
   $httpProvider.defaults.headers.put["Content-Type"]  = "application/json";
 
-  $httpProvider.interceptors.push(['$q', '$location', '$window', '$state', function ($q, $location, $window, $state) {
+  $httpProvider.interceptors.push(['$q', '$location', '$window', '$state', '$rootScope', function ($q, $location, $window, $state, $rootScope) {
      return {
          'request': function (config) {
+
              config.headers = config.headers || {};
              if (localStorage.getItem('token')) {
                  config.headers.Authorization = 'Bearer ' + localStorage.getItem('token');
@@ -56,6 +57,7 @@ angular
                   $window.localStorage.clear();
                   $state.go('app.login');
                 });
+
              }
 
              return $q.reject(response);
@@ -149,7 +151,21 @@ angular
     if (!expireModal) {
 		  expireModal = $uibModal.open({
         templateUrl: 'views/common/modals/keep-login-modal.html',
-        controller: 'ModalInstanceCtrl',
+        controller: function($scope, $timeout, $uibModalInstance, $state) {
+
+            $scope.close = function() {
+                $uibModalInstance.close();
+            };
+
+            $scope.refreshPage = function() {
+
+              $uibModalInstance.close();
+                $timeout( function() {
+                    $state.go($state.current, {}, {reload: true});
+                }, 1000 );
+            };
+        },
+        controllerAs: 'vm',
         backdrop: true
       });
 
@@ -201,7 +217,17 @@ angular
     console.log ('keep alive');
     //add check for token expiry to request new jwt token if expired
   });
+
+
+  $rootScope.$on('$viewContentLoading', function(){
+    //Here you can hide your pre-loader
+    $rootScope.loading = true;
+  });
 	
+   $rootScope.$on('$viewContentLoaded', function(){
+    //Here you can hide your pre-loader
+    $rootScope.loading = false;
+  });
 	
   $rootScope.$state = $state;
   return $rootScope.$stateParams = $stateParams;

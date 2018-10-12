@@ -17,11 +17,13 @@ function kycCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeout
 
 	vm.levelOne = function() {
 
+		var cntry = angular.element( document.querySelector( '#country' ) );
+
 		var data = {
 			address: vm.user.address,
 			city: vm.user.city,
 			postalcode: vm.user.postalcode,
-			country: vm.user.country.id,
+			country: cntry.data('default') || vm.user.country.id,
       		birthdate: vm.user.birthdate
 		};
 

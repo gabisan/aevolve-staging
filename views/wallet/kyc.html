@@ -16,6 +16,15 @@
           <!--<pre>{{ kyc3 }}</pre>-->
         </div>
         <div class="card-body">
+          <div ng-if="kyc1.status_id == 1" class="alert alert-warning text-center" role="alert">
+            <i class="fas fa-hourglass-half"></i> Details under review. Thank you for your patience.
+          </div>
+
+          <div ng-if="kyc1.status_id == 2" class="alert alert-danger text-center" role="alert">
+            <i class="fas fa-exclamation-circle"></i> Oops! There seems to be a problem. Please resubmit
+            correct details.
+          </div>
+
           <form class="form-signin" name="vm.form" ng-submit="kyc.levelOne()" role="form" >
             Name
             <div class="form-group">
@@ -83,13 +92,23 @@
                 <option ng-repeat="option in kyc.countries" value="{{option.id}}">{{option.name}}</option>
               </select>
 
-              <select class="custom-select" name="country" ng-model="kyc.user.country"
+              <select
+                      class="custom-select"
+                      name="country"
+                      ng-model="kyc.user.country"
                       ng-if="kyc1.status_id != 1"
-
+                      ng-options="option.id as option.name for option in kyc.countries"
+                      data-default="{{ kyc.user.country }}"
+                      id="country"
               >
-                <option value="">--Select Country--</option>
-                <option ng-repeat="option in kyc.countries" value="{{option.id}}">{{option.name}}</option>
+
               </select>
+              <!--<select class="custom-select" name="country" ng-model="kyc.user.country"-->
+                      <!--ng-if="kyc1.status_id != 1"-->
+              <!--&gt;-->
+                <!--<option value="">&#45;&#45;Select Country&#45;&#45;</option>-->
+                <!--<option ng-repeat="option in kyc.countries" value="{{option.id}}">{{option.name}}</option>-->
+              <!--</select>-->
 
             </div>
             <div class="form-group">
@@ -137,34 +156,50 @@
         <div class="card-body">
           <!-- <img src="data:image/jpeg;base64,{{ kyc.img }}" /> -->
           <form class="form-signin" name="vm.form" ng-submit="kyc.levelTwo()" role="form">
-            <div class="form-group">
-              <!--<select class="custom-select"-->
-                      <!--id="idtype"-->
-                      <!--name="idtype"-->
-                      <!--ng-model="kyc.user.idtype"-->
-                      <!--ng-options="option.name for option in kyc.idlist track by option.id"-->
 
-              <!--&gt;-->
-              <!--</select>-->
+            <div ng-if="kyc2.status_id == 2" class="alert alert-danger text-center" role="alert">
+              <i class="fas fa-exclamation-circle"></i>  Oops! There seems to be a problem. Please resubmit correct details.
+            </div>
 
-              <select class="custom-select" name="country" ng-model="kyc.user.idtype"
-                      ng-if="kyc2.status_id == 1"
-                      disabled
-              >
-                <option value="">--Select ID Type--</option>
-                <option ng-repeat="option in kyc.idlist" value="{{option.id}}">{{option.name}}</option>
-              </select>
-
-              <select class="custom-select" name="country" ng-model="kyc.user.idtype"
-                      ng-if="kyc2.status_id != 1"
-              >
-                <option value="">--Select ID Type--</option>
-                <option ng-repeat="option in kyc.idlist" value="{{option.id}}">{{option.name}}</option>
-              </select>
-
+             <div  ng-if="kyc2.status_id == 1" class="alert alert-warning text-center" role="alert">
+              <i class="fas fa-hourglass-half"></i> Details under review. Thank you for your patience.
+              <div class="height-md"></div>
             </div>
 
             <div ng-if="kyc2.status_id != 1">
+              <div class="form-group">
+
+                For certain transactions we will be requiring you to submit an additional proof of identity in the form of a valid identification document.
+                <div class="height-md"></div>
+
+                <!--<select-->
+                        <!--class="custom-select"-->
+                        <!--name="idtype"-->
+                        <!--ng-model="kyc.user.idtype"-->
+                        <!--ng-if="kyc2.status_id == 1"-->
+                        <!--ng-options="option.id as option.name for option in kyc.idlist"-->
+                        <!--data-default="{{ kyc.user.idtype }}"-->
+                        <!--id="idtype"-->
+                        <!--disabled-->
+                <!--&gt;-->
+
+                <!--</select>-->
+
+                <select
+                        class="custom-select"
+                        name="idtype"
+                        ng-model="kyc.user.idtype"
+                        ng-options="option.id as option.name for option in kyc.idlist"
+                        id="idtype"
+
+                    >
+                  <option value="">ID Type</option>
+                </select>
+
+              </div>
+
+              
+
               <div class="form-group">
                 <input class="form-control" id="name" type="text" ng-model="kyc.user.idno" placeholder="ID Number" required="required">
               </div>
@@ -175,13 +210,20 @@
               </div>
 
               <button type="submit" class="btn btn-primary bg-primary" >Submit</button>
+
             </div>
 
-            <div ng-if="kyc2.status_id == 1">
-              <div class="form-group text-center">
-                <i class="fas fa-hourglass-half text-warning"></i> Identification under review.
-              </div>
-            </div>
+            <!--<div ng-if="kyc2.status_id == 1">-->
+              <!--<div class="form-group">-->
+                <!--<input class="form-control" id="name" type="text" ng-model="kyc.user.idno" placeholder="ID Number" required="required" disabled>-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--<div ng-if="kyc2.status_id == 1">-->
+              <!--<div class="form-group text-center">-->
+                <!--<i class="fas fa-hourglass-half text-warning"></i> Identification under review.-->
+              <!--</div>-->
+            <!--</div>-->
           </form>
         </div>
       </div>
@@ -191,7 +233,18 @@
           Level 3 Document + Photo
         </div>
         <div class="card-body">
-          <div ng-if="kyc3.status_id != 1">
+
+          <div ng-if="kyc3.status_id == 1" class="alert alert-warning text-center" role="alert">
+            <i class="fas fa-hourglass-half"></i> Your photo + document details are under review. Thank you for your patience.
+          </div>
+
+          <div ng-if="kyc3.status_id == 2">
+            <div class="alert alert-danger text-center" role="alert">
+              <i class="fas fa-exclamation-circle"></i> Oops! There seems to be a problem. Please resubmit correct details.
+            </div>
+          </div>
+
+           <div ng-if="kyc3.status_id != 1">
             <p>We request you to take a clear selfie holding up a valid ID and the properly filled-up KYC form that you downloaded.
             </p>
             <div class="height-md"></div>
@@ -218,11 +271,6 @@
               <div class="height-md"></div>
               <button type="submit" class="btn btn-primary bg-primary">Submit</button>
             </form>
-          </div>
-          <div ng-if="kyc3.status_id == 1">
-            <div class="form-group text-center">
-              <i class="fas fa-hourglass-half text-warning"></i> Document + Photo under review.
-            </div>
           </div>
         </div>
       </div>
