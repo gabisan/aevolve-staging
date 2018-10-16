@@ -9,7 +9,8 @@ function kycCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeout
 
 	var vm = this;
 
-	$scope.img     = '';
+	$scope.file   = '';
+	$scope.img    = '';
 	$scope.format = 'yyyy-MM-dd';
   	$scope.date   = new Date();
 
@@ -37,7 +38,7 @@ function kycCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeout
 
             $timeout( function() {
                 $state.go($state.current, {}, {reload: true});
-            }, 3000 );
+            }, 1000 );
 
 		}).catch((response) => {
 
@@ -85,12 +86,13 @@ function kycCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeout
 
 	vm.levelTwo = function() {
 
+		var idtype = angular.element( document.querySelector( '#idtype' ) );
+		
 		var data = {
-			idno : vm.user.id,
-			idtype: vm.user.idtype.id,
-			image : $scope.file.base64
+			idno : vm.user.idno,
+			idtype: idtype.data('default') || vm.user.idtype.id,
+			image : vm.file.base64
 		};
-		// 'data:'+$scope.file.filetype+';base64,' + 
 
 		UserService.kyc(data, 'level2').then((response) => {
 
@@ -98,7 +100,12 @@ function kycCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeout
                 'Success!',
                 'Successfully submitted identification, please wait for verification.',
                 'success'
-            );
+            ).then(() => {
+
+            	$timeout( function() {
+                	$state.go($state.current, {}, {reload: true});
+            	}, 	1000 );
+            });
 
 		}).catch((response) => {
 
@@ -109,8 +116,8 @@ function kycCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeout
 	vm.levelThree = function() {
 
 		var data = {
-			document: $scope.document.base64,
-			selfie : $scope.selfie.base64
+			document: vm.document.base64,
+			selfie : vm.selfie.base64
 		};
 
 		UserService.kyc(data, 'level3').then((response) => {
@@ -119,7 +126,12 @@ function kycCtrl($scope, $rootScope, $http, $window, $state, $uibModal, $timeout
                 'Success!',
                 'Successfully submitted identification, please wait for verification.',
                 'success'
-            );
+            ).then(() => {
+
+            	$timeout( function() {
+                	$state.go($state.current, {}, {reload: true});
+            	}, 	1000 );
+            });
 
 		}).catch((response) => {
 
