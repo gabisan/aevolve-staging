@@ -1,151 +1,22 @@
 <div class="order-first order-sm-first order-md-first order-lg-last animated fadeIn" ng-controller="gettokenCtrl">
   <div class="tab-content" id="myTabContent">
-          <div class="tab-pane show active" id="gettokens-tab" role="tabpanel" aria-labelledby="gettokens-tab">
-            <h4>Get Token</h4>
-            <p>Purchase your Aevolve Token now. You may use the following cryptocurrencies to purchase your AEVX tokens: Bitcoin, Ethereum, Bitcoin Cash.</p>
-            <div class="height-sm"></div>
-            <!-- <div class="card ">
-              <div class="card-header card-dash-header">
-                <i class="fas fa-arrow-circle-right"></i> Select currency to convert to AEVX
-              </div>
-              <div class="card-body text-center">
-                <a href="#" class="btn btn-choice">
-                  <i class="fab fa-btc fa-4x pad-md"></i>
-                  <br /> Bitcoin</a>
-                <a href="#" class="btn btn-choice">
-                  <i class="fab fa-ethereum fa-4x pad-md"></i>
-                  <br /> Ethereum</a>
-                <a href="#" class="btn btn-choice">
-                  <i class="fab fa-bitcoin fa-4x pad-md"></i>
-                  <br /> Bitcoin
-                  <br />Cash</a>
-
-                <div class="height-lg"></div>
-
-                <a href="#" class="btn btn-primary bg-primary" ng-click="openGetTokenModal()">Continue</a>
-
-              </div>
-            </div> -->
-
-            <!--<div class="card ">-->
-              <!--<div class="card-header card-dash-header">-->
-                <!--<i class="fas fa-arrow-circle-right"></i> Select currency to convert to AEVX-->
-              <!--</div>-->
-              <!--<div class="card-body text-center">-->
-                <!--<a href="#" class="btn btn-choice">-->
-                  <!--<i class="fab fa-btc fa-4x pad-md"></i>-->
-                  <!--<br> Bitcoin</a>-->
-                <!--<a href="#" class="btn btn-choice">-->
-                  <!--<i class="fab fa-ethereum fa-4x pad-md"></i>-->
-                  <!--<br> Ethereum</a>-->
-                <!--<a href="#" class="btn btn-choice">-->
-                  <!--<i class="fab fa-bitcoin fa-4x pad-md"></i>-->
-                  <!--<br> Bitcoin-->
-                  <!--<br>Cash</a>-->
-
-                <!--<div class="height-lg"></div>-->
-                <!--<div class="form-group">-->
-                  <!--<select class="custom-select" id="inputGroupSelect03" style="max-width: 420px;">-->
-                    <!--<option selected="">Select Package</option>-->
-                    <!--<option value="1">30% bonus - 2 year vesting</option>-->
-                    <!--<option value="2">20% bonus - 1 year vesting</option>-->
-                    <!--<option value="3">10% bonus - 6 months vesting</option>-->
-                    <!--<option value="4">0% bonus -  no vesting</option>-->
-                  <!--</select>-->
-                <!--</div>-->
-                <!--<div class="height-md"></div>-->
-                <!--<a href="#" class="btn btn-primary bg-primary" ng-click="openGetTokenModal()"><i class="fas fa-arrow-circle-right"></i> Continue</a>-->
-                <!--<div class="height-lg"></div>-->
-                <!--<a href="#"><i class="fas fa-info-circle"></i> Package Vesting Terms</a>-->
-              <!--</div>-->
-            <!--</div>-->
-
-            <div class="card ">
-
-              <div ng-if="whitelist == 'PENDING'">
-                <div class="lb-content">
-                  <div class="height-md"></div>
-                  <img src="img/token-icon.png" style="height:30px;">
-                  <div class="height-md"></div>
-                  Your whitelist request is currently undergoing review.
-                  <div class="height-md"></div>
-                </div>
-
-                <div class="lb-bg"></div>
-              </div>
-
-              <div ng-if="whitelist == ''">
-                <div class="lb-content">
-                  <img src="img/token-icon.png" style="height:30px;">
-                  <div class="height-md"></div>
-                  To evaluate your qualification to join the Pre-ICO please join our whitelist.
-                  <div class="height-lg"></div>
-                  <a href="#" class="btn btn-primary bg-primary" ng-click="openJoinWhiteList()"><i class="fas fa-arrow-circle-right"></i>
-                    Join Whitelist</a>
-                </div>
-
-                <div class="lb-bg"></div>
-              </div>
-
-              <div class="card-header card-dash-header">
-                <i class="fas fa-arrow-circle-right"></i> Select currency to convert to AEVX
-              </div>
-              <div class="card-body text-center">
-                <a href="#" class="btn btn-choice">
-                  <i class="fab fa-btc fa-4x pad-md"></i>
-                  <br> Bitcoin</a>
-                <a href="#" class="btn btn-choice">
-                  <i class="fab fa-ethereum fa-4x pad-md"></i>
-                  <br> Ethereum</a>
-                <a href="#" class="btn btn-choice">
-                  <i class="fab fa-bitcoin fa-4x pad-md"></i>
-                  <br> Bitcoin
-                  <br>Cash</a>
-
-                <div class="height-lg"></div>
-                <div class="form-group">
-                  <select class="custom-select" id="inputGroupSelect03" style="max-width: 420px;">
-                    <option selected="">Select Package</option>
-                    <option value="1">30% bonus - 2 year vesting</option>
-                    <option value="2">20% bonus - 1 year vesting</option>
-                    <option value="3">10% bonus - 6 months vesting</option>
-                    <option value="4">0% bonus - no vesting</option>
-                  </select>
-                </div>
+        <div class="tab-pane show active" id="gettokens-tab" role="tabpanel" aria-labelledby="gettokens-tab">
+          <h4>Get Token</h4>
+          <p>Purchase your Aevolve Token now. You may use the following cryptocurrencies to purchase your AEVX tokens: Bitcoin, Ethereum, Bitcoin Cash.</p>
+          <div class="height-sm"></div>
+          <div class="card ">
+            <div ng-if="whitelist == 'PENDING'">
+              <div class="lb-content">
                 <div class="height-md"></div>
-                <a href="#" class="btn btn-primary bg-primary" data-toggle="modal" data-target="#tradeModal"><i class="fas fa-arrow-circle-right"></i>
-                  Continue</a>
-                <div class="height-lg"></div>
-                <a href="#"><i class="fas fa-info-circle"></i> Package Vesting Terms</a>
+                <img src="img/token-icon.png" style="height:30px;">
+                <div class="height-md"></div>
+                Your whitelist request is currently undergoing review.
+                <div class="height-md"></div>
               </div>
+              <div class="lb-bg"></div>
             </div>
 
-            <div class="height-lg"></div>
-            <!--<div class="card ">-->
-              <!--<div class="card-header card-dash-header bg-disabled">-->
-                <!--<i class="fas fa-arrow-circle-right"></i> Select currency to convert to AEVX-->
-              <!--</div>-->
-              <!--<div class="card-body text-center">-->
-                <!--<div class="height-md"></div>-->
-                <!--This function is currently disabled. Please join our whitelist to participate in the token sale.-->
-                <!--<div class="height-lg"></div>-->
-                <!--<a href="#" class="btn btn-primary bg-primary" ng-click="openJoinWhiteList()">Join Whitelist</a>-->
-              <!--</div>-->
-            <!--</div>-->
-            <div class="height-lg"></div>
-            <!--<div class="card ">-->
-              <!--<div class="card-header card-dash-header bg-disabled">-->
-                <!--<i class="fas fa-arrow-circle-right"></i> Select currency to convert to AEVX-->
-              <!--</div>-->
-              <!--<div class="card-body text-center">-->
-                <!--<div class="height-md"></div>-->
-                <!--This function is currently disabled. Kindly fill up KYC details and enable 2FA to activate. -->
-                <!--<div class="height-lg"></div>-->
-                <!--<a class="btn btn-primary bg-primary" id="k-tab" data-toggle="tab" href="#kyc-tab" role="tab" aria-controls="kyc-tab" aria-selected="false"><i class="fas fa-check-circle"></i>Activate KYC</a>-->
-              <!--</div>-->
-            <!--</div>-->
-
-            <div class="card ">
+            <div ng-if="kyc == false && whitelist == 'APPROVED'">
               <div class="lb-content">
                 <img src="img/token-icon.png" style="height:30px;">
                 <div class="height-md"></div>
@@ -157,61 +28,56 @@
                   Complete KYC</a>
               </div>
               <div class="lb-bg"></div>
-              <div class="card-header card-dash-header">
-                <i class="fas fa-arrow-circle-right"></i> Select currency to convert to AEVX
-              </div>
-              <div class="card-body text-center">
-                <a href="#" class="btn btn-choice">
-                  <i class="fab fa-btc fa-4x pad-md"></i>
-                  <br> Bitcoin</a>
-                <a href="#" class="btn btn-choice">
-                  <i class="fab fa-ethereum fa-4x pad-md"></i>
-                  <br> Ethereum</a>
-                <a href="#" class="btn btn-choice">
-                  <i class="fab fa-bitcoin fa-4x pad-md"></i>
-                  <br> Bitcoin
-                  <br>Cash</a>
-
-                <div class="height-lg"></div>
-                <div class="form-group">
-                  <select class="custom-select" id="" style="max-width: 420px;">
-                    <option selected="">Select Package</option>
-                    <option value="1">30% bonus - 2 year vesting</option>
-                    <option value="2">20% bonus - 1 year vesting</option>
-                    <option value="3">10% bonus - 6 months vesting</option>
-                    <option value="4">0% bonus - no vesting</option>
-                  </select>
-                </div>
-                <div class="height-md"></div>
-                <a href="#" class="btn btn-primary bg-primary" data-toggle="modal" data-target="#tradeModal"><i class="fas fa-arrow-circle-right"></i>
-                  Continue</a>
-                <div class="height-lg"></div>
-                <a href="#"><i class="fas fa-info-circle"></i> Package Vesting Terms</a>
-              </div>
             </div>
-            <div class="height-lg"></div>
-            <!-- <div class="card ">
-              <div class="card-header card-dash-header bg-disabled">
-                <i class="fas fa-arrow-circle-right"></i> Select currency to convert to AEVX
-              </div>
-              <div class="card-body text-center">
+
+            <div ng-if="whitelist == ''">
+              <div class="lb-content">
+                <img src="img/token-icon.png" style="height:30px;">
                 <div class="height-md"></div>
-                Function disabled. Fill up KYC and enable 2FA to enable.
-                <div class="height-md"></div>
-                <a href="#" class="btn btn-choice disabled">
-                  <i class="fab fa-btc fa-4x pad-md"></i>
-                  <br /> Bitcoin</a>
-                <a href="#" class="btn btn-choice disabled">
-                  <i class="fab fa-ethereum fa-4x pad-md"></i>
-                  <br /> Ethereum</a>
-                <a href="#" class="btn btn-choice disabled">
-                  <i class="fab fa-bitcoin fa-4x pad-md"></i>
-                  <br /> Bitcoin
-                  <br />Cash</a>
+                To evaluate your qualification to join the Pre-ICO please join our whitelist.
                 <div class="height-lg"></div>
-                <a href="#" class="btn btn-primary bg-primary disabled" data-toggle="modal" data-target="#tradeModal">Continue</a>
+                <a href="#" class="btn btn-primary bg-primary" ng-click="openJoinWhiteList()"><i class="fas fa-arrow-circle-right"></i>
+                  Join Whitelist</a>
               </div>
-            </div> -->
+              <div class="lb-bg"></div>
+            </div>
+
+            <div class="card-header card-dash-header">
+              <i class="fas fa-arrow-circle-right"></i> Select currency to convert to AEVX
+            </div>
+            <div class="card-body text-center">
+              <a href="#" class="btn btn-choice">
+                <i class="fab fa-btc fa-4x pad-md"></i>
+                <br> Bitcoin</a>
+              <a href="#" class="btn btn-choice">
+                <i class="fab fa-ethereum fa-4x pad-md"></i>
+                <br> Ethereum</a>
+              <a href="#" class="btn btn-choice">
+                <i class="fab fa-bitcoin fa-4x pad-md"></i>
+                <br> Bitcoin
+                <br>Cash</a>
+
+              <div class="height-lg"></div>
+              <div class="form-group">
+                <select class="custom-select" id="inputGroupSelect03" style="max-width: 420px;">
+                  <option selected="">Select Package</option>
+                  <option value="1">30% bonus - 2 year vesting</option>
+                  <option value="2">20% bonus - 1 year vesting</option>
+                  <option value="3">10% bonus - 6 months vesting</option>
+                  <option value="4">0% bonus - no vesting</option>
+                </select>
+              </div>
+              <div class="height-md"></div>
+              <a href="#" class="btn btn-primary bg-primary" data-toggle="modal" data-target="#tradeModal"><i class="fas fa-arrow-circle-right"></i>
+                Continue</a>
+              <div class="height-lg"></div>
+              <a href="#"><i class="fas fa-info-circle"></i> Package Vesting Terms</a>
+            </div>
           </div>
+
+          <div class="height-lg"></div>
+          <div class="height-lg"></div>
+
+        </div>
   </div>
 </div>
